@@ -15,21 +15,25 @@ class CreateArticlesTable extends Migration
     {
        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-              /**
-               * Specify the user ID
-               */
+
+            /**
+             * Specify the user ID
+             */
+
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('content');
-            $table->timestamp('published_at');  
+            $table->timestamp('published_at');
             $table->timestamps();
+
             /**
              *  Foreign key generation,user_id and the article_id connect
              */
-             $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
         });
     }
 
