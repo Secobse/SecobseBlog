@@ -15,13 +15,17 @@ class CreateArticlesTable extends Migration
     {
        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-              // 指定文章所属用户ID
+              /**
+               * Specify the user ID
+               */
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('content');
             $table->timestamp('published_at');  
             $table->timestamps();
-            // 生成外键，并且指定在删除用户时同时删除该用户的所有文章
+            /**
+             *  Foreign key generation,user_id and the article_id connect
+             */
              $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
