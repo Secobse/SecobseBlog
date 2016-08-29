@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class UserTest extends TestCase
 {
     /**
-     * Run user test.
+     * Run user register test.
      *
      * @return void
      */
@@ -22,6 +22,11 @@ class UserTest extends TestCase
     		 ->seePageIs('/home');
     }
 
+    /**
+     * Run user login test.
+     *
+     * @return void
+     */
     public function testLogin()
     {
         $this->visit('/login')
