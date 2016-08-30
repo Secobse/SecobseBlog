@@ -17,20 +17,24 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-	public function index()
-	{
-		$articles = Article::latest('published_at')->Paginate(5);
-		return view('welcome', compact('articles'));
-	}
+    public function index()
+    {
+    	$articles = Article::latest('published_at')->Paginate(5);
+    	return view('welcome', compact('articles'));
+    }
 
     /**
-     * Show single article.
+     * Show single article and author.
      *
      * @return \Illuminate\Http\Response
      */
-	public function showSingleArticle($id)
-	{
-		$article = Article::findOrFail($id);
-		return view('articles.showSingleArticle', compact('article'));
-	}
+    public function showSingleArticle($id)
+    {
+    	$article = Article::findOrFail($id); 	
+    	$users=DB::table('users')
+    	->select('name')
+    	->where('id','=', $article->user_id)
+    	->get();
+    	return view('articles.showSingleArticle', compact('article', 'users'));
+    }
 }
