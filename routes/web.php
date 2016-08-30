@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/home', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
 Auth::routes();
 
+Route::get('profile', 'User\UserController@profile');
+Route::post('profile', 'User\UserController@updateAvatar');
+
 Route::get('/','Article\ArticleController@index');
-Route::get('/articles','Article\ArticleController@index');
-Route::get('/articles/{id}','Article\ArticleController@showSingleArticle');
+Route::get('articles','Article\ArticleController@index');
+Route::get('articles/{id}','Article\ArticleController@showSingleArticle');
 
 

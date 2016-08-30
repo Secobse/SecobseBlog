@@ -4,9 +4,12 @@ This is our team's blog.
 
 #### we use
 
+- php5.6
 - Laravel5.3
 - mysql
 - bootstrap
+- font-awesome
+- (maybe need php-gd)
 
 #### team member:
 - [Gasbylei](https://github.com/Gasbylei)

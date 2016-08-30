@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Article;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 use App\Article;
