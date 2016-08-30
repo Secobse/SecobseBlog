@@ -19,7 +19,6 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login / registration.
      *
@@ -36,4 +35,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    /**
+     * Cover AuthenticatesUsers trait username().
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'name';
+    }
+
 }
