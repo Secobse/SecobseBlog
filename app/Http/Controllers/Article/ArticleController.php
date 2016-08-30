@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Article;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 use App\Article;
@@ -30,7 +31,7 @@ class ArticleController extends Controller
      */
     public function showSingleArticle($id)
     {
-    	$article = Article::findOrFail($id); 	
+    	$article = Article::findOrFail($id);
     	$users=DB::table('users')
     	->select('name')
     	->where('id','=', $article->user_id)
