@@ -16,7 +16,7 @@
 
 	<article>
 		<div class="body">
-			{{ $article->content }}
+			@MarkDown($article->content)
 		</div>
 	</article>
 

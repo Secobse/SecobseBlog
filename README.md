@@ -9,7 +9,7 @@ This is our team's blog.
 - mysql
 - bootstrap
 - font-awesome
-- (maybe need php-gd)
+- (maybe need php-gd, php-mbstring)
 
 #### team member:
 - [Gasbylei](https://github.com/Gasbylei)

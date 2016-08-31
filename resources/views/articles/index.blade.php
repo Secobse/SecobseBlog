@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Secobse')
+@section('title', 'Articles')
 
 @section('content')
 <div class="container">
@@ -9,12 +9,6 @@
 	<hr>
 	@foreach($articles as $article)
 	<h3><a href="{{ url('articles', $article->id) }}">{{ $article->title }}</a></h3>
-
-	<article>
-		<div class="body">
-			{{ str_limit($article->content) }}
-		</div>
-	</article>
 	@endforeach
 	<hr>
 	{!! $articles->render() !!}

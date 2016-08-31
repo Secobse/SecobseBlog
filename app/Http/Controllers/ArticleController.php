@@ -7,13 +7,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use Illuminate\Support\Facades\DB;
-
+use Auth;
 use App\Article;
-use Carbon\Carbon;
-
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class ArticleController extends Controller
 {
+    /**
+     * Instantiate Articlecontroller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show', 'index');
+    }
+
     /**
      * Show 5 articles with every page.
      *
@@ -32,7 +41,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.createArticle');
     }
 
     /**
@@ -43,7 +52,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:50',
+            'mdContent' => 'required',
+        ]);
+
+        $title = $request->input('title');
+        $mdContent = $request->input('mdContent');
+
+        $article = Article::create([
+            'title' => $title,
+            'content' => $mdContent,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect('/articles');
     }
 
     /**
@@ -59,6 +82,9 @@ class ArticleController extends Controller
         ->select('name')
         ->where('id','=', $article->user_id)
         ->get();
+
+        $article->content = Markdown::convertToHtml($article->content);
+
         return view('articles.show', compact('article', 'users'));
     }
 

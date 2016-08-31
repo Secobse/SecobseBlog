@@ -11,6 +11,7 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <a href="{{ url('/articles/create') }}"><button class="btn btn-sm btn-success">Create A Blog</button></a>
                 </div>
             </div>
         </div>
