@@ -77,3 +77,10 @@ if you don't have node or npm, please install it.
 The last, run `php artisan serve`, go to [localhost:8000](http://localhost:8000)
 
 every time you pull the update, you must read the commit log to execute optional migarte, composer install or npm install
+
+#### 2016.8.31 Update:
+
+> Set your reset password successful, you can choose the Mail service provider what you like.
+By default, you can sign up a [mailtrap.io](https://mailtrap.io) and test for free.Happy use it!
+You need update you MAIL*** in your **.env** file.For mailtrap you only need a username and a
+password.
