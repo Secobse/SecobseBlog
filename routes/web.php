@@ -11,15 +11,20 @@
 |
 */
 
-Route::get('home', 'HomeController@index');
+// Route::get('home', 'HomeController@index');
 
 Auth::routes();
 
+Route::resource('home', 'HomeController', ['only' => [
+	'index'
+]]);
+
+Route::resource('', 'MainPageController', ['only' => [
+	'index'
+]]);
+
+Route::resource('articles', 'ArticleController');
+
 Route::get('profile', 'User\UserController@profile');
 Route::post('profile', 'User\UserController@updateAvatar');
-
-Route::get('/','Article\ArticleController@index');
-Route::get('articles','Article\ArticleController@index');
-Route::get('articles/{id}','Article\ArticleController@showSingleArticle');
-
 
