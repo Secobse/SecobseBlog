@@ -10,7 +10,7 @@
 
 	@foreach($users as $user)
 	<em>Author: {{ $user->name }}</em>
-	@endforeach	
+	@endforeach
 
 	<hr>
 
