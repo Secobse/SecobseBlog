@@ -8,9 +8,7 @@
 	<h1>{{ $article->title }}</h1>
 	<em>Date:({{ $article->published_at }})</em>
 
-	@foreach($users as $user)
-	<em>Author: {{ $user->name }}</em>
-	@endforeach
+	<em>Author: {{ $article->username }}</em>
 
 	<hr>
 

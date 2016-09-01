@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Auth;
+use DB;
 
 class LoginController extends Controller
 {
@@ -44,6 +49,47 @@ class LoginController extends Controller
     public function username()
     {
         return 'name';
+    }
+
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        DB::table('users')
+                    ->where('name', $request->input('name'))
+                    ->update(['isactive' => $request->input('isactive')]);
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+                ?: redirect()->intended($this->redirectPath());
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        DB::table('users')
+                    ->where('id', Auth::user()->id)
+                    ->update(['isactive' => $request->input('isactive')]);
+
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 
 }

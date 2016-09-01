@@ -13,6 +13,13 @@
                     You are logged in!
                     <a href="{{ url('/articles/create') }}"><button class="btn btn-sm btn-success">Create A Blog</button></a>
                 </div>
+
+                <form action="/profile" method="POST" enctype="multipart/form-data">
+                    <label for="update">Update Profile Image</label>
+                    <input type="file" name="avatar">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="submit" value="Submit" class="btn btn-sm btn-primary">
+                </form>
             </div>
         </div>
     </div>

@@ -63,7 +63,7 @@ class ArticleController extends Controller
         $article = Article::create([
             'title' => $title,
             'content' => $mdContent,
-            'user_id' => Auth::user()->id,
+            'username' => Auth::user()->name,
         ]);
 
         return redirect('/articles');
@@ -78,14 +78,10 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::findOrFail($id);
-        $users=DB::table('users')
-        ->select('name')
-        ->where('id','=', $article->user_id)
-        ->get();
 
         $article->content = Markdown::convertToHtml($article->content);
 
-        return view('articles.show', compact('article', 'users'));
+        return view('articles.show', compact('article'));
     }
 
     /**

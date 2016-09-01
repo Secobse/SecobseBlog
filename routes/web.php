@@ -25,6 +25,6 @@ Route::resource('', 'MainPageController', ['only' => [
 
 Route::resource('articles', 'ArticleController');
 
-Route::get('profile', 'User\UserController@profile');
-Route::post('profile', 'User\UserController@updateAvatar');
+Route::get('profile/{username}', 'User\UserController@profile');
+Route::post('profile', 'User\UserController@updateAvatar')->middleware('auth');
 

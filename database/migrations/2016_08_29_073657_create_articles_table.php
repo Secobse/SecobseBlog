@@ -20,9 +20,9 @@ class CreateArticlesTable extends Migration
              * Specify the user ID
              */
 
-            $table->integer('user_id')->unsigned();
+            $table->string('username');
             $table->string('title');
-            $table->text('content');
+            $table->longText('content');
             $table->timestamp('published_at');
             $table->timestamps();
 
@@ -30,8 +30,8 @@ class CreateArticlesTable extends Migration
              *  Foreign key generation,user_id and the article_id connect
              */
 
-            $table->foreign('user_id')
-                  ->references('id')
+            $table->foreign('username')
+                  ->references('name')
                   ->on('users')
                   ->onDelete('cascade');
         });

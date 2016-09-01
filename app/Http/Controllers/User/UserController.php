@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Auth;
 use Image;
+use DB;
 use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
@@ -17,9 +18,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-	public function profile() {
-		$user = Auth::user();
-		return view('users.profile', array('user' => Auth::user()));
+	public function profile($username) {
+		$user = DB::table('users')
+							->where('name', $username)
+							->get();
+		return view('users.profile', ['user' => $user]);
 	}
 
     /**
@@ -47,6 +50,6 @@ class UserController extends Controller
 			$user->save();
 		}
 
-		return view('users.profile', array('user' => Auth::user()));
+		return redirect('/profile/' . Auth::user()->name);
 	}
 }
