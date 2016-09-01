@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "doctrine/dbal": "^2.5",
         "intervention/image": "^2.3",
-        "graham-campbell/markdown": "^6.1"
+        "graham-campbell/markdown": "^6.1",
+        "laravelcollective/html": "5.3.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

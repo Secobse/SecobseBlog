@@ -11,6 +11,5 @@
 	<h3><a href="{{ url('articles', $article->id) }}">{{ $article->title }}</a></h3>
 	@endforeach
 	<hr>
-	{!! $articles->render() !!}
 </div>
 @endsection

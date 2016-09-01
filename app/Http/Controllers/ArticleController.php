@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Post;
 
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -92,7 +93,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -104,7 +106,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'mdContent' => 'required',
+        ]);
+
+        $article = Article::findOrFail($id);
+
+        $article->content = $request->input('mdContent');
+
+        $article->save();
+
+        return redirect('/articles/' . $id);
     }
 
     /**
@@ -115,6 +127,10 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::findOrFail($id);
+
+        $article->delete();
+
+        return redirect('/home');
     }
 }
