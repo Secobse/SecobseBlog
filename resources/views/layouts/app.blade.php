@@ -12,7 +12,13 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/content.css">
+    @section('css')
+    <link href="/css/simplemde.min.css" rel="stylesheet">
+
     @yield('css')
+
 
     <!-- Scripts -->
     <script>
@@ -45,7 +51,7 @@
                 <ul class="nav navbar-nav">
                     @if (Auth::guest())
                     @else
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}" class="index_home">Home</a></li>
                     @endif
                 </ul>
 
@@ -57,8 +63,8 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px;">
-                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="{{ Auth::user()->avatar }}" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;"/>
+                            <a href="#" class="dropdown-toggle index_user" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px;">
+                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="{{ Auth::user()->avatar }}" style="width: 32px; height: 32px; position: absolute;  left: 10px; border-radius: 50%;"/>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -88,6 +94,7 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="js/welcome.js"></script>
     @yield('js')
 </body>
 </html>
