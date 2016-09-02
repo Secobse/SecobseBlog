@@ -44,12 +44,12 @@
 				<!-- Left Side Of Navbar -->
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/admin') }}">Home</a></li>
-					<li><a href="{{ url('/admin/articles') }}">文章管理</a></li>
-					<li><a href="{{ url('/admin/users') }}">用户管理</a></li>
+					<li><a href="{{ url('/admin/articles') }}">Article management</a></li>
+					<li><a href="{{ url('/admin/users') }}">User management</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-				  <li><a href="/">网站主页</a></li>
+				  <li><a href="/">Website Home</a></li>
 				  <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">admin <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">

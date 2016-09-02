@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>登录后台</title>
+	<title>Login Backend</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -60,22 +60,22 @@
 
 	<form class="form-signin" role="form" action="/admin/login" method="post">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<h2 class="form-signin-heading">登录后台</h2>
-		<label for="username" class="sr-only">管理员</label>
+		<h2 class="form-signin-heading">Login Backend</h2>
+		<label for="username" class="sr-only">Admin</label>
 		<input type="text" name="username" id="username" class="form-control" placeholder="UserName" required autofocus>
 		@if ($errors->has('username'))
 			<span class="help-block">
 				<strong>{{ $errors->first('username') }}</strong>
 			</span>
 		@endif
-		<label for="inputPassword" class="sr-only">密码</label>
+		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 		@if ($errors->has('password'))
 			<span class="help-block">
 				<strong>{{ $errors->first('password') }}</strong>
 			</span>
 		@endif
-		<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 	</form>
 
 </div> <!-- /container -->
