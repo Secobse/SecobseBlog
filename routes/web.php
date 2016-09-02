@@ -28,3 +28,15 @@ Route::resource('articles', 'ArticleController');
 Route::get('profile/{username}', 'User\UserController@profile');
 Route::post('profile', 'User\UserController@updateAvatar')->middleware('auth');
 
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function()
+{
+		Route::get('login', "AdminHomeController@getLogin");
+		Route::post('login', "AdminHomeController@postLogin");
+		Route::get('loginout', "AdminHomeController@loginout");
+
+		Route::group(['middleware'=> 'adminAuth'],function(){
+				Route::get('/', 'AdminHomeController@index');
+				Route::resource('articles','ArticleController');
+				Route::resource('users','UserController');
+	});
+});
