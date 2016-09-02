@@ -19,7 +19,7 @@
 						   <th class="text-right">Operation</th>
 					   </tr>
 
-					   @foreach($users as $k=> $v)
+					   @foreach($users as $v)
 					   <tr>
 						   <th scope="row">{{ $v->id }}</th>
 						   <td>{{ $v->name }}</td>
@@ -32,7 +32,7 @@
 							   <input type="hidden" name="_token" value="{{ csrf_token() }}">
 							   <button type="submit" class="btn btn-danger">Delete</button>
 							 </form>
-							 @if($v->isadmin ==0)
+							 @if($v->isadmin == 0)
 							 <a href="{{ URL('admin/users/'.$v->id.'/edit') }}" class="btn btn-success">Set to Admin</a>
 							 @else
 							<a href="{{ URL('admin/users/'.$v->id.'/edit') }}" class="btn btn-success">Cancel Admin</a>

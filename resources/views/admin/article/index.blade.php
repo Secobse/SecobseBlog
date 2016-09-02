@@ -17,7 +17,7 @@
 						   <th class="text-right">operation</th>
 					   </tr>
 
-					   @foreach($articles as $k=> $v)
+					   @foreach($articles as $v)
 					   <tr>
 						   <th scope="row">{{ $v->id }}</th>
 						   <td><a href="{{ url('admin/articles',$v->id) }}">{{ $v->title }}</a></td>
