@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Auth;
 use Image;
 use DB;
+use App\Article;
 use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
@@ -22,7 +23,8 @@ class UserController extends Controller
 		$user = DB::table('users')
 							->where('name', $username)
 							->get();
-		return view('users.profile', ['user' => $user]);
+		$articles = Article::where('username', $username)->Paginate(5);
+		return view('users.profile', ['user' => $user, 'articles' => $articles]);
 	}
 
     /**

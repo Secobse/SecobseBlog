@@ -47,6 +47,7 @@
                     @else
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     @endif
+                    <li><a href="{{ url('/articles') }}">Articles</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
