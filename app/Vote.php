@@ -8,5 +8,7 @@ class Vote extends Model
 {
     protected $table = 'votes';
 
-	protected $fillable = ['userId', 'articleId', 'isVote'];
+	protected $fillable = ['user', 'articleId', 'isLove', 'isUnLove'];
+
+	public $timestamps = false;
 }

@@ -17,11 +17,11 @@ class CreateVotesTable extends Migration
 
             $table->engine = 'InnoDB';
 
-            $table->integer('userId')->unsigned();
+            $table->string('user');
             $table->integer('articleId')->unsigned();
 
-            $table->foreign('userId')
-                  ->references('id')
+            $table->foreign('user')
+                  ->references('name')
                   ->on('users')
                   ->onDelete('cascade');
 
@@ -31,7 +31,6 @@ class CreateVotesTable extends Migration
                   ->onDelete('cascade');
 
             $table->boolean('isVote')->default(0);
-            $table->timestamps();
         });
     }
 

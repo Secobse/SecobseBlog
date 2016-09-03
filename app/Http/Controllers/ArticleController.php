@@ -31,7 +31,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest('published_at')->Paginate(5);
+        $articles = Article::latest('created_at')->Paginate(5);
         return view('articles.index', compact('articles'));
     }
 
@@ -79,6 +79,10 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::findOrFail($id);
+
+        $article->readtimes += 1;
+
+        $article->save();
 
         $article->content = Markdown::convertToHtml($article->content);
 
@@ -139,34 +143,48 @@ class ArticleController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     * @param  string $user
      * @return \Illuminate\Http\Response
      */
-    public function love(Request $request, $id)
+    public function love(Request $request)
     {
+        $id = $request->input('id');
+        $user = Auth::user()->name;
+
         $article = Article::findOrFail($id);
 
-        if ($vote = Vote::where('userId', Auth::user()->id)
-                            ->where('articleId', $id)
+        if ($vote = Vote::where('articleId', $id)
+                            ->where('user', $user)
                             ->first()) {
-            if ($vote->isVote == 1) {
+            if ($vote->isLove == 1) {
 
-                $request->session()->flash('error','You already love it');
+                $request->session()->flash('error','remove love it');
+
+                Vote::where('user', $user)
+                        ->where('articleId', $id)
+                        ->update(['isLove' => 0]);
+
+                $article->love -= 1;
+
+                $article->save();
 
             } else {
 
-                Vote::where('userId', Auth::user()->id)
+                Vote::where('user', $user)
                         ->where('articleId', $id)
-                        ->update(['isVote' => 1]);
+                        ->update(['isLove' => 1]);
 
                 $article->love += 1;
 
                 $article->save();
             }
+
         } else {
             $vote = Vote::firstOrCreate([
-                'userId' => Auth::user()->id,
+                'user' => $user,
                 'articleId' => $id,
-                'isVote' => 1,
+                'isLove' => 1,
+                'isUnLove' => 0,
             ]);
 
             $article->love += 1;
@@ -183,38 +201,50 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function unLove(Request $request, $id)
+    public function unLove(Request $request)
     {
+        $id = $request->input('id');
+        $user = Auth::user()->name;
 
         $article = Article::findOrFail($id);
 
-        if ($vote = Vote::where('userId', Auth::user()->id)
+        if ($vote = Vote::where('user', $user)
                             ->where('articleId', $id)
                             ->first()) {
-            if ($vote->isVote == 0) {
+            if ($vote->isUnLove == 1) {
 
-                $request->session()->flash('error','You already unlove it');
+                $request->session()->flash('error','remove unlove it');
+
+                Vote::where('user', $user)
+                        ->where('articleId', $id)
+                        ->update(['isUnLove' => 0]);
+
+                $article->unLove -= 1;
+
+                $article->save();
 
             } else {
 
-                Vote::where('userId', Auth::user()->id)
+                Vote::where('user', $user)
                         ->where('articleId', $id)
-                        ->update(['isVote' => 0]);
+                        ->update(['isUnLove' => 1]);
 
-                $article->love -= 1;
+                $article->unLove += 1;
 
                 $article->save();
 
             }
+
         } else {
 
             $vote = Vote::firstOrCreate([
-                'userId' => Auth::user()->id,
+                'user' => $user,
                 'articleId' => $id,
-                'isVote' => 0,
+                'isLove' => 0,
+                'isUnLove' =>1,
             ]);
 
-            $article->love -= 1;
+            $article->unLove += 1;
 
             $article->save();
         }

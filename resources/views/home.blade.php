@@ -41,7 +41,7 @@
                             <a href="/articles/{{ $userArticle->id }}/edit" class="pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             {{ $userArticle->title }}
                         </li>
-                        <form id="delete-form" action="{{ route('articles.destroy', $userArticle->id) }}" method="POST" style="display: none;">
+                        <form id="delete-form" action="/articles/{{ $userArticle->id }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                         </form>

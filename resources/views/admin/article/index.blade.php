@@ -1,5 +1,7 @@
 @extends('admin/default.app')
+
 @section('title','Backend')
+
 @section('content')
 <div class="container">
   <div class="row">
