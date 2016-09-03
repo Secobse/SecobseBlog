@@ -10,7 +10,7 @@ class Article extends Model
 {
 	protected $table = 'articles';
 
-	protected $fillable=['title', 'content', 'username'];
+	protected $fillable = ['title', 'content', 'username'];
 
     /**
      * Scope a query find user articles.

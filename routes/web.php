@@ -24,6 +24,8 @@ Route::resource('', 'MainPageController', ['only' => [
 ]]);
 
 Route::resource('articles', 'ArticleController');
+Route::post('/articles/love/{id}', 'ArticleController@love');
+Route::post('/articles/unLove/{id}', 'ArticleController@unLove');
 
 Route::get('profile/{username}', 'User\UserController@profile');
 Route::post('profile', 'User\UserController@updateAvatar')->middleware('auth');

@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Post;
 
-use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Article;
+use App\Vote;
+use DB;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
 class ArticleController extends Controller
@@ -132,5 +132,93 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect('/home');
+    }
+
+    /**
+     * love the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function love(Request $request, $id)
+    {
+        $article = Article::findOrFail($id);
+
+        if ($vote = Vote::where('userId', Auth::user()->id)
+                            ->where('articleId', $id)
+                            ->first()) {
+            if ($vote->isVote == 1) {
+
+                $request->session()->flash('error','You already love it');
+
+            } else {
+
+                Vote::where('userId', Auth::user()->id)
+                        ->where('articleId', $id)
+                        ->update(['isVote' => 1]);
+
+                $article->love += 1;
+
+                $article->save();
+            }
+        } else {
+            $vote = Vote::firstOrCreate([
+                'userId' => Auth::user()->id,
+                'articleId' => $id,
+                'isVote' => 1,
+            ]);
+
+            $article->love += 1;
+
+            $article->save();
+        }
+
+        return redirect('/articles');
+    }
+
+    /**
+     * unlove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function unLove(Request $request, $id)
+    {
+
+        $article = Article::findOrFail($id);
+
+        if ($vote = Vote::where('userId', Auth::user()->id)
+                            ->where('articleId', $id)
+                            ->first()) {
+            if ($vote->isVote == 0) {
+
+                $request->session()->flash('error','You already unlove it');
+
+            } else {
+
+                Vote::where('userId', Auth::user()->id)
+                        ->where('articleId', $id)
+                        ->update(['isVote' => 0]);
+
+                $article->love -= 1;
+
+                $article->save();
+
+            }
+        } else {
+
+            $vote = Vote::firstOrCreate([
+                'userId' => Auth::user()->id,
+                'articleId' => $id,
+                'isVote' => 0,
+            ]);
+
+            $article->love -= 1;
+
+            $article->save();
+        }
+
+        return redirect('/articles');
     }
 }

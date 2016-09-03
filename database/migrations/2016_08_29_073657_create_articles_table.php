@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->string('username');
             $table->string('title');
             $table->longText('content');
+            $table->integer('love')->default(0);
             $table->timestamp('published_at');
             $table->timestamps();
 

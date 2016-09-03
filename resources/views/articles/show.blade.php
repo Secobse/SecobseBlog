@@ -8,7 +8,7 @@
 	<h1>{{ $article->title }}</h1>
 	<em>Date:({{ $article->published_at }})</em>
 
-	<em>Author: {{ $article->username }}</em>
+	<em>Author: <a href="/profile/{{ $article->username }}">{{ $article->username }}</a></em>
 
 	<hr>
 

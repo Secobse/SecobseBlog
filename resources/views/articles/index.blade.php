@@ -12,6 +12,9 @@
 
 		<div class="col-md-6">
 			@foreach($articles as $article)
+			    @if(Session::has('error'))
+				    <div class="alert alert-success">{{ Session::get('error') }}</div>
+			    @endif
 				<div class="list-group">
 				  <a href="{{ url('articles', $article->id) }}" class="list-group-item">
 				    <h4 class="list-group-item-heading">Author: {{ $article->username }}
@@ -19,6 +22,18 @@
 				    </h4>
 				    <p class="list-group-item-text">
 				    	<h3>{{ $article->title }}</h3>
+						<a href="/articles/love/{{ $article->id }}" onclick="event.preventDefault();
+                                                 document.getElementById('love-form').submit();"><span class="label label-danger pull-right"><i class="fa fa-heart-o" aria-hidden="true"></i>{{ $article->love }}</span>
+</a>
+                        <form id="love-form" action="/articles/love/{{ $article->id }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+						<a href="/articles/unLove/{{ $article->id }}" onclick="event.preventDefault();
+                                                 document.getElementById('unlove-form').submit();"><span class="label label-success pull-right"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+</a>
+                        <form id="unlove-form" action="/articles/unLove/{{ $article->id }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
 				    </p>
 				  </a>
 				</div>
