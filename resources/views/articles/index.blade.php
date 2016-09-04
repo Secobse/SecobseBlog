@@ -5,6 +5,12 @@
 @section('content')
 <div class="container">
 	<div class="row">
+		@if(Session::has('status'))
+				<div class="alert alert-success">
+						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+						{{ Session::get('status') }}
+				</div>
+		@endif
 		<div class="col-md-4">
 			<h1>Articles</h1>
 			<h5>Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</h5>
@@ -49,4 +55,10 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+		$('div.alert').not('.alert-important').delay(3000).slideUp(500);
+</script>
 @endsection

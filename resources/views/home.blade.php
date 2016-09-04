@@ -5,6 +5,12 @@
 @section('content')
 <div class="container">
     <div class="row">
+      @if(Session::has('status'))
+  				<div class="alert alert-success">
+  						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+  						{{ Session::get('status') }}
+  				</div>
+  		@endif
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -41,7 +47,7 @@
                             <a href="/articles/{{ $userArticle->id }}/edit" class="pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             {{ $userArticle->title }}
                         </li>
-                        <form id="delete-form" action="{{ route('articles.destroy', $userArticle->id) }}" method="POST" style="display: none;">
+                        <form id="delete-form" action="/articles/{{ $userArticle->id }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                         </form>
@@ -52,4 +58,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+		$('div.alert').not('.alert-important').delay(3000).slideUp(500);
+</script>
 @endsection
