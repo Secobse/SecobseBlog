@@ -67,7 +67,7 @@ class ArticleController extends Controller
             'username' => Auth::user()->name,
         ]);
 
-        $request->session()->flash('status','Artile has been published successfully!');
+        session()->flash('status', 'Article has been published successfully!');
 
         return redirect('/articles');
     }
@@ -122,7 +122,7 @@ class ArticleController extends Controller
 
         $article->save();
 
-        $request->session()->flash('status','Artile has been updated successfully!');
+        session()->flash('status', 'Article has been updated successfully!');
 
         return redirect('/articles/' . $id);
     }
@@ -138,6 +138,8 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
 
         $article->delete();
+
+        session()->flash('status', 'Article has been deleted successfully!');
 
         return redirect('/home');
     }
