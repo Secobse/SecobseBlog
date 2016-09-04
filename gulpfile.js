@@ -15,6 +15,7 @@ require('laravel-elixir-vue');
 
 elixir(mix => {
     mix.sass('app.scss')
+    mix.sass('content.scss')
        .copy('node_modules/font-awesome/fonts', 'public/fonts')
        .copy('node_modules/simplemde/dist/simplemde.min.css', 'public/css/simplemde.min.css')
        .copy('node_modules/simplemde/dist/simplemde.min.js', 'public/js/simplemde.min.js')
