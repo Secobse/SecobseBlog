@@ -67,6 +67,8 @@ class ArticleController extends Controller
             'username' => Auth::user()->name,
         ]);
 
+        $request->session()->flash('status','Artile has been published successfully!');
+
         return redirect('/articles');
     }
 
@@ -119,6 +121,8 @@ class ArticleController extends Controller
         $article->content = $request->input('mdContent');
 
         $article->save();
+
+        $request->session()->flash('status','Artile has been updated successfully!');
 
         return redirect('/articles/' . $id);
     }

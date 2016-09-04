@@ -16,6 +16,7 @@
 						   <th>username</th>
 						   <th>e-mail</th>
 						   <th>created_at</th>
+               <th>isactive</th>
 						   <th class="text-right">Operation</th>
 					   </tr>
 
@@ -25,6 +26,13 @@
 						   <td>{{ $v->name }}</td>
 						   <td>{{ $v->email }}</td>
 						   <td>{{ $v->created_at }}</td>
+               <td>
+                 @if($v->isactive = 1)
+                    Online
+                 @else
+                    Offline
+                 @endif
+               </td>
 						   <td class="text-right">
 
 							 <form action="{{ URL('admin/users/'.$v->id) }}" method="POST" style="display: inline;">
