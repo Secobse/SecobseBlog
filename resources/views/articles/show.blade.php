@@ -6,6 +6,12 @@
 @section('content')
 <div class="container">
 	<div class="row">
+		@if(Session::has('status'))
+				<div class="alert alert-success">
+						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+						{{ Session::get('status') }}
+				</div>
+		@endif
 		<div class="col-md-6 col-md-offset-3">
 			<h1>{{ $article->title }}</h1>
 				<em>Date:({{ $article->published_at }})</em>
@@ -49,4 +55,10 @@
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 	<script id="dsq-count-scr" src="//secobse.disqus.com/count.js" async></script>
 </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+		$('div.alert').not('.alert-important').delay(3000).slideUp(500);
+</script>
 @endsection
