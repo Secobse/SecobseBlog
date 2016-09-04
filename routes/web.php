@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,35 +9,31 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 // Route::get('home', 'HomeController@index');
-
 Auth::routes();
-
 Route::resource('home', 'HomeController', ['only' => [
 	'index'
 ]]);
-
 Route::resource('', 'MainPageController', ['only' => [
 	'index'
 ]]);
-
 Route::resource('articles', 'ArticleController');
-Route::post('/articles/love/{id}', 'ArticleController@love');
-Route::post('/articles/unLove/{id}', 'ArticleController@unLove');
-
+Route::post('articles/love', 'ArticleController@love')->name('love');
+Route::post('articles/unLove', 'ArticleController@unLove')->name('unlove');
 Route::get('profile/{username}', 'User\UserController@profile');
 Route::post('profile', 'User\UserController@updateAvatar')->middleware('auth');
-
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function()
 {
-		Route::get('login', "AdminHomeController@getLogin");
-		Route::post('login', "AdminHomeController@postLogin");
-		Route::get('loginout', "AdminHomeController@loginout");
-
+		Route::get('login', 'AdminHomeController@getLogin');
+		Route::post('login', 'AdminHomeController@postLogin');
+		Route::get('loginout', 'AdminHomeController@loginout');
 		Route::group(['middleware'=> 'adminAuth'],function(){
 				Route::get('/', 'AdminHomeController@index');
-				Route::resource('articles','ArticleController');
-				Route::resource('users','UserController');
+				Route::get('articles', 'ArticleController@index');
+				Route::put('articles/{article}', 'ArticleController@update')->name('articleAdminUpdate');
+				Route::get('articles/{article}/edit', 'ArticleController@edit')->name('articleAdminEdit');
+				Route::delete('articles/{article}', 'ArticleController@destroy')->name('articleAdminDelete');
+				Route::get('articles/{article}', 'ArticleController@show')->name('articleAdminShow');
+				Route::resource('users','UserController', ['only' => ['index', 'edit', 'destroy']]);
 	});
 });
