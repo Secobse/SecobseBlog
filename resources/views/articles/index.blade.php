@@ -7,11 +7,11 @@
 	<div class="row">
 		@if(Session::has('status'))
 				<div class="alert alert-success">
-						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
-						{{ Session::get('status') }}
+					<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+					{{ Session::get('status') }}
 				</div>
 		@endif
-		<div class="col-md-4">
+		<div class="col-md-4 col-md-offset-1">
 			<h1>Articles</h1>
 			<h5>Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</h5>
 		    @if(Session::has('error'))

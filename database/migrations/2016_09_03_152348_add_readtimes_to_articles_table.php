@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class AddReadtimesToArticlesTable extends Migration
 {
     /**
@@ -17,7 +15,6 @@ class AddReadtimesToArticlesTable extends Migration
             $table->integer('readtimes')->unsigned()->default(0);
         });
     }
-
     /**
      * Reverse the migrations.
      *

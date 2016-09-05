@@ -18,7 +18,6 @@ class AddIsUnloveToVotesTable extends Migration
             $table->boolean('isUnLove')->default(0);
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -1,15 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
 use Auth;
 use DB;
-
 class LoginController extends Controller
 {
     /*
@@ -22,7 +17,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
     /**
      * Where to redirect users after login / registration.
@@ -30,7 +24,6 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-
     /**
      * Create a new controller instance.
      *
@@ -40,7 +33,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
-
     /**
      * Cover AuthenticatesUsers trait username().
      *
@@ -50,7 +42,6 @@ class LoginController extends Controller
     {
         return 'name';
     }
-
     /**
      * Send the response after the user was authenticated.
      *
@@ -60,17 +51,13 @@ class LoginController extends Controller
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
-
         DB::table('users')
                     ->where('name', $request->input('name'))
                     ->update(['isactive' => $request->input('isactive')]);
-
         $this->clearLoginAttempts($request);
-
         return $this->authenticated($request, $this->guard()->user())
                 ?: redirect()->intended($this->redirectPath());
     }
-
     /**
      * Log the user out of the application.
      *
@@ -82,14 +69,9 @@ class LoginController extends Controller
         DB::table('users')
                     ->where('id', Auth::user()->id)
                     ->update(['isactive' => $request->input('isactive')]);
-
         $this->guard()->logout();
-
         $request->session()->flush();
-
         $request->session()->regenerate();
-
         return redirect('/articles');
     }
-
 }
