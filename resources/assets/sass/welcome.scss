@@ -23,7 +23,7 @@ nav {
     height: 0;
     padding-bottom: 56.25%;
     background: {
-        image: url(/uploads/avatars/background.jpg);
+        image: url(/picture/background.jpg);
         repeat: no-repeat;
         size: contain;
     }
@@ -96,7 +96,7 @@ nav {
 .header-name {
     @include header;
     font: {
-        size: 25px;
+        size: 3.5vw;
         style: oblique;
         weight: bold;
     }
@@ -104,7 +104,7 @@ nav {
 .header-middle {
     @include header;
     font: {
-        size: 25px;
+        size: 20px;
     }
 }
 
@@ -269,4 +269,13 @@ two content page
     p.pull-left {
         padding-top: 6px;
     }
+}
+
+
+/**
+ * login and register page transparency
+ */
+
+.modal-content {
+    opacity: .9;
 }
