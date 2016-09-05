@@ -17,6 +17,8 @@
 		    @if(Session::has('error'))
 			    <div class="alert alert-success">{{ Session::get('error') }}</div>
 		    @endif
+
+		    @include('articles.sideLeaderBoard')
 		</div>
 
 		<div class="col-md-6">
