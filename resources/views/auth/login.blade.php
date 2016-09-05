@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6 input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
