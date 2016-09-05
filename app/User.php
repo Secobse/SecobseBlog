@@ -20,6 +20,13 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+     /**
+     * The attributes that are primarykey.
+     *
+     * @var array
+     */
+    protected $primaryKey = 'id';
+
     /**
      * The attributes that should be hidden for arrays.
      *
