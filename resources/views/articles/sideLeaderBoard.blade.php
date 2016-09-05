@@ -1,66 +1,89 @@
-<!-- Nav tabs -->
-<ul class="nav nav-pills" role="tablist">
-  <li role="presentation" class="active"><a href="#Readtimes" role="tab" data-toggle="tab">Readtimes</a></li>
-  <li role="presentation"><a href="#Love" role="tab" data-toggle="tab">Love</a></li>
-  <li role="presentation"><a href="#Update" role="tab" data-toggle="tab">Recently Update</a></li>
-</ul>
+<div style="margin-top: -15px;">
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="Readtimes">
-	<div class="table-responsive">
-	  <table class="table table-bordered">
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Readtimes</th>
-		</tr>
-		@foreach($readered as $reader)
-		<tr>
-			<td>{{ $reader->title }}</td>
-			<td>{{ $reader->username }}</td>
-			<td>{{ $reader->readtimes}}</td>
-		</tr>
-		@endforeach
-	  </table>
+<div class="offer offer-radius offer-success">
+	<div class="shape">
+		<div class="shape-text">
+			top
+		</div>
 	</div>
-  </div>
+	<div class="offer-content">
+		<h3 class="lead">
+			Readtimes
+		</h3>
+		<div class="table-responsive">
+		  <table class="table">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Readtimes</th>
+			</tr>
+			@foreach($readered as $reader)
+			<tr>
+				<td><a href="/articles/{{ $reader->id }}">{{ $reader->title }}</a></td>
+				<td><a href="/profile/{{ $reader->username }}">{{ $reader->username }}</a></td>
+				<td>{{ $reader->readtimes}}</td>
+			</tr>
+			@endforeach
+		  </table>
+		</div>
+	</div>
+</div>
 
-  <div role="tabpanel" class="tab-pane" id="Love">
-	<div class="table-responsive">
-	  <table class="table table-bordered">
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Lovetimes</th>
-		</tr>
-		@foreach($loved as $love)
-		<tr>
-			<td>{{ $love->title }}</td>
-			<td>{{ $love->username }}</td>
-			<td>{{ $love->love}}</td>
-		</tr>
-		@endforeach
-	  </table>
+<div class="offer offer-radius offer-danger">
+	<div class="shape">
+		<div class="shape-text">
+			top
+		</div>
 	</div>
-  </div>
+	<div class="offer-content">
+		<h3 class="lead">
+			Lovetimes
+		</h3>
+		<div class="table-responsive">
+		  <table class="table">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Lovetimes</th>
+			</tr>
+			@foreach($loved as $love)
+			<tr>
+				<td><a href="/articles/{{ $love->id }}">{{ $love->title }}</a></td>
+				<td><a href="/profile/{{ $love->username }}">{{ $love->username }}</a></td>
+				<td>{{ $love->love}}</td>
+			</tr>
+			@endforeach
+		  </table>
+		</div>
+	</div>
+</div>
 
-  <div role="tabpanel" class="tab-pane" id="Update">
-	<div class="table-responsive">
-	  <table class="table table-bordered">
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Update Time</th>
-		</tr>
-		@foreach($updated as $update)
-		<tr>
-			<td>{{ $update->title }}</td>
-			<td>{{ $update->username }}</td>
-			<td>{{ $update->updated_at}}</td>
-		</tr>
-		@endforeach
-	  </table>
+<div class="offer offer-radius offer-info">
+	<div class="shape">
+		<div class="shape-text">
+			top
+		</div>
 	</div>
-  </div>
+	<div class="offer-content">
+		<h3 class="lead">
+			Last Update
+		</h3>
+		<div class="table-responsive">
+		  <table class="table">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Update Time</th>
+			</tr>
+			@foreach($updated as $update)
+			<tr>
+				<td><a href="/articles/{{ $update->id }}">{{ $update->title }}</a></td>
+				<td><a href="/profile/{{ $update->username }}">{{ $update->username }}</a></td>
+				<td>{{ $update->updated_at}}</td>
+			</tr>
+			@endforeach
+		  </table>
+		</div>
+	</div>
+</div>
 </div>

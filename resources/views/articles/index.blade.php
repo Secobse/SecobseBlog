@@ -3,7 +3,20 @@
 @section('title', 'Articles')
 
 @section('content')
+<div style="background: #040404;">
 <div class="container">
+	<div class="jumbotron">
+	<div style="color: white;">
+	  <h2>Articles <small>Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</small></h2>
+	  <p>Let's Begin!</p>
+	</div>
+	<p style="float: right;"><a class="btn btn-primary btn-lg" href="/articles/create" role="button" style="background: #f46b2c; border: none;">Create One</a></p>
+	</div>
+
+	<div>
+
+	</div>
+
 	<div class="row">
 		@if(Session::has('status'))
 				<div class="alert alert-success">
@@ -11,17 +24,8 @@
 						{{ Session::get('status') }}
 				</div>
 		@endif
-		<div class="col-md-4">
-			<h1>Articles</h1>
-			<h5>Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</h5>
-		    @if(Session::has('error'))
-			    <div class="alert alert-success">{{ Session::get('error') }}</div>
-		    @endif
 
-		    @include('articles.sideLeaderBoard')
-		</div>
-
-		<div class="col-md-6">
+		<div class="col-md-6 col-md-offset-1">
 			@foreach($articles as $article)
 				<div class="list-group">
 				  <a href="{{ url('articles', $article->id) }}" class="list-group-item">
@@ -53,9 +57,17 @@
 			    <li class="next"><a href="{{ $articles->nextPageUrl() }}">Newer &rarr;</a></li>
 			  </ul>
 			</nav>
-			<hr>
+		</div>
+
+		<div class="col-md-4">
+		    @if(Session::has('error'))
+			    <div class="alert alert-success">{{ Session::get('error') }}</div>
+		    @endif
+
+		    @include('articles.sideLeaderBoard')
 		</div>
 	</div>
+</div>
 </div>
 @endsection
 

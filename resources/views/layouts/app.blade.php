@@ -22,7 +22,7 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top navbar-fixed-top" style="margin-bottom: 0px; background-color: #040404; border-color: black;">
         <div class="container">
             <div class="navbar-header">
 
@@ -35,19 +35,20 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: white; font-weight: bold; font-size: 24px;">
                     Secobse
+
                 </a>
+                  <a class="navbar-brand" href="{{ url('/') }}">
+                    <img alt="Brand" src="/images/logo.png" style="position: relative; left: 95px; bottom: 13px; width: 50px; height: 50px; ">
+                  </a>
+
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    @if (Auth::guest())
-                    @else
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    @endif
-                    <li><a href="{{ url('/articles') }}">Articles</a></li>
+                    <li><a href="{{ url('/articles') }}" style="color: white; font-weight: bold; font-size: 16px;">Articles</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -58,13 +59,14 @@
                         <li><a data-toggle="modal" data-target="#register">Register</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px; color: white; font-weight: bold;">
                                 <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="{{ Auth::user()->avatar }}" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;"/>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/profile', Auth::user()->name) }}"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                                <li><a href="{{ url('/home') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();

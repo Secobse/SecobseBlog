@@ -14,11 +14,10 @@ require('laravel-elixir-vue');
  */
 
 elixir(mix => {
-    mix.sass('app.scss')
-       .sass('welcome.scss')
+    mix.sass(['app.scss', 'content.scss', 'offer.scss'])
+       .sass('welcome.scss', 'public/css')
        .copy('node_modules/font-awesome/fonts', 'public/fonts')
        .copy('node_modules/simplemde/dist/simplemde.min.css', 'public/css/simplemde.min.css')
        .copy('node_modules/simplemde/dist/simplemde.min.js', 'public/js/simplemde.min.js')
-       .copy('resources/assets/picture/background.jpg', 'public/picture')
        .webpack('app.js');
 });

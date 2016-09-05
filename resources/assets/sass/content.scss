@@ -1,0 +1,103 @@
+// article index page
+@mixin article_contentshadow {
+  -moz-box-shadow:0px 0px 0px white;
+  -webkit-box-shadow:0px 0px 0px white;
+  -ms-box-shadow:0px 0px 0px white;
+  -o-box-shadow:0px 0px 0px white;
+}
+
+@mixin article_contenttransition {
+  -webkit-transition:0.8s;
+  -ms-transition:0.8s;
+  -o-transition:0.8s;
+  -moz-transition:0.8s;
+}
+
+@mixin article_contentshadow_hover {
+  box-shadow: 15px 15px 10px 1px #908686,-15px -5px 40px -10px #908686;
+  -webkit-box-shadow: 15px 15px 40px -10px #908686,-15px -5px 40px -10px #908686;
+  -ms-box-shadow: 15px 15px 10px 1px #908686,-15px -5px 40px -10px #908686;
+  -moz-box-shadow: 15px 15px 10px 1px #908686,-15px -5px 40px -10px #908686;
+}
+
+@mixin rank_article_scale {
+  transform: scale(2,0);
+  -webkit-transform:scale(2,0);
+  -o-transform:scale(2,0);
+  -ms-transform:scale(2,0);
+  -moz-transform:scale(2,0);
+}
+.list-group-item {
+  //second color
+  padding: 20px 15px;
+  @include article_contentshadow;
+  @include article_contenttransition;
+  &:hover {
+    //second color
+    @include article_contentshadow_hover;
+  }
+}
+
+// modified love and unlove height
+.pull-right {
+  margin-top: -5px;
+}
+
+// //sideleaderBorder style
+// // $sideborder_backgound: #585d61;
+// $sideborder_color:#EAEEF1;
+// $sideborder_listcolor:#EAEEF1;
+// //reset rank active style
+// .tab_card {
+//   // background-color:$sideborder_backgound;
+//   border-radius: 5px;
+//   .nav-pills {
+//   li{
+//     color:$sideborder_color;
+//     a{
+//       color:$sideborder_color;
+//       }
+//     }
+//   }
+// }
+// .tab-pane {
+//   //background-color:$sideborder_backgound;
+// }
+// .nav>li>a:hover {
+//   background-color:#797b7c;
+//   display: block;
+//   width: auto;
+// }
+// .table {
+//   color:$sideborder_listcolor;
+// }
+.navbar-brand{
+  float: none;
+  position: absolute;
+  left:45%;
+  @media screen and (max-width:435px){
+    position:absolute;
+    left:38%;
+  }
+  @media screen and (max-width:414px){
+    position:absolute;
+    left:37%;
+  }
+  @media screen and (max-width:360px){
+    position:absolute;
+    left:35%;
+  }
+  @media screen and (max-width:320px){
+    position:absolute;
+    left:32%;
+  }
+}
+
+.jumbotron {
+    position: relative;
+    background: #000 url("/images/jumbotron-bg.png") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+}
