@@ -7,8 +7,8 @@
 	<div class="row">
 		@if(Session::has('status'))
 				<div class="alert alert-success">
-						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
-						{{ Session::get('status') }}
+					<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+					{{ Session::get('status') }}
 				</div>
 		@endif
 		<div class="col-md-4 col-md-offset-1">
