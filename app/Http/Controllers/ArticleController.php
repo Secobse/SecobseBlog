@@ -26,7 +26,10 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest('created_at')->Paginate(5);
-        return view('articles.index', compact('articles'));
+        $readered = Article::where('readtimes', '>', 0)->get()->sortBy('readtimes')->reverse()->slice(0, 5);
+        $loved = Article::where('love', '>', 0)->get()->sortBy('love')->reverse()->slice(0, 5);
+        $updated = Article::all()->sortBy('updated_at')->reverse()->slice(0, 5);
+        return view('articles.index', compact('articles', 'readered', 'loved', 'updated'));
     }
     /**
      * Show the form for creating a new resource.
