@@ -54,8 +54,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a data-toggle="modal" data-target="#login">Login</a></li>
+                        <li><a data-toggle="modal" data-target="#register">Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px;">
@@ -84,6 +84,9 @@
             </div>
         </div>
     </nav>
+
+    @include('auth.login')
+    @include('auth.register')
 
     @yield('content')
 
