@@ -148,6 +148,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    　　<h3>Find on our github</h3>
                        <ul class="social">
                             <li><a href="https://github.com/G1enY0ung">G1enY0ung</a></li>
                             <li><a href="https://github.com/Gasbylei">Gasbylei</a></li>
