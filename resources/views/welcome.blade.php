@@ -55,8 +55,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                        <li><a href="{{ url('/login') }} "><span class="span">Login</span></a></li>
+                        <li><a data-toggle="modal" data-target="#register">Register</a></li>
+                        <li><a data-toggle="modal" data-target="#login"><span class="span">Login</span></a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px;">
@@ -88,6 +88,9 @@
             Because square pegs don't fit in round holes.
         </div>
     </nav>
+
+    @include('auth.login')
+    @include('auth.register')
 
     <!-- content -->
     <div class="one-container">
@@ -145,8 +148,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <h3>Find on our github</h3>
-                        <ul class="social">
+                       <ul class="social">
                             <li><a href="https://github.com/G1enY0ung">G1enY0ung</a></li>
                             <li><a href="https://github.com/Gasbylei">Gasbylei</a></li>
                             <li><a href="https://github.com/happylwp">happylwp</a></li>
