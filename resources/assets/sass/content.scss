@@ -40,9 +40,18 @@
 
 // modified love and unlove height
 .pull-right {
-  margin-top: -5px;
+  margin-top: -1px;
 }
-
+.pull-right_create{
+  float:right;
+  @media screen and(max-width:400px){
+  float:left;
+  }
+}
+.label{
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
 // //sideleaderBorder style
 // // $sideborder_backgound: #585d61;
 // $sideborder_color:#EAEEF1;
