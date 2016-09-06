@@ -23,9 +23,13 @@ Route::resource('', 'MainPageController', ['only' => [
 	'index'
 ]]);
 
+Route::get('love', 'VoteController@getLove');
+Route::get('unlove', 'VoteController@getUnLove');
+Route::post('love', 'VoteController@love')->name('love')->middleware('auth');
+Route::post('unlove', 'VoteController@unLove')->name('unlove')->middleware('auth');
+
 Route::resource('articles', 'ArticleController');
-Route::post('articles/love', 'ArticleController@love')->name('love');
-Route::post('articles/unLove', 'ArticleController@unLove')->name('unlove');
+
 
 Route::get('profile/{username}', 'User\UserController@profile');
 Route::post('profile', 'User\UserController@updateAvatar')->middleware('auth');

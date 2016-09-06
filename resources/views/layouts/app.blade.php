@@ -41,7 +41,7 @@
 
                 </a>
                   <a class="navbar-brand" href="{{ url('/') }}">
-                    <img alt="Brand" src="/images/logo.png" style="position: relative; left: 95px; bottom: 13px; width: 50px; height: 50px; ">
+                    <img alt="Brand" src="/images/logo.png" style="position: relative; left: 95px; bottom: 13px; width: 55px; height: 50px; ">
                   </a>
 
             </div>
@@ -56,8 +56,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a data-toggle="modal" data-target="#login">Login</a></li>
-                        <li><a data-toggle="modal" data-target="#register">Register</a></li>
+                        <li><a data-toggle="modal" data-target="#login" style="color: white; font-weight: bold;">Login</a></li>
+                        <li><a data-toggle="modal" data-target="#register" style="color: white; font-weight: bold;">Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px; color: white; font-weight: bold;">
