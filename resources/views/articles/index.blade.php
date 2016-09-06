@@ -3,20 +3,16 @@
 @section('title', 'Articles')
 
 @section('content')
-<div style="background: #040404;">
+<div style="background: #fff;">
+
 <div class="container">
-	<div class="jumbotron">
+	<div class="jumbotron" style="margin-top: 70px;">
 	<div style="color: white;">
-	  <h2>Articles <small>Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</small></h2>
-	  <p>Let's Begin!</p>
+	  <h2>Articles <small style="color: white;">Page {{ $articles->currentPage() }} of {{ $articles->lastPage() }}</small></h2>
+	  <p style="font-weight: bold;">Let's Begin!</p>
 	</div>
 	<p style="float: right;"><a class="btn btn-primary btn-lg" href="/articles/create" role="button" style="background: #f46b2c; border: none;">Create One</a></p>
 	</div>
-
-	<div>
-
-	</div>
-
 	<div class="row">
 		@if(Session::has('status'))
 				<div class="alert alert-success">
@@ -25,7 +21,7 @@
 				</div>
 		@endif
 
-		<div class="col-md-6 col-md-offset-1">
+		<div class="col-md-7">
 			@foreach($articles as $article)
 				<div class="list-group">
 				  <a href="{{ url('articles', $article->id) }}" class="list-group-item">
@@ -59,7 +55,7 @@
 			</nav>
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-5">
 		    @if(Session::has('error'))
 			    <div class="alert alert-success">{{ Session::get('error') }}</div>
 		    @endif
