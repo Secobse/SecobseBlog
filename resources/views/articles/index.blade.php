@@ -29,20 +29,21 @@
 						<span class="label label-info pull-right_create">created-time: {{ $article->created_at }}</span>
 				    </h4>
 				    <p class="list-group-item-text">
-				    	<h3>{{ $article->title }}</h3>
-						<span class="label label-primary" style="margin-top:16px;margin-bottom: 12px;">readtimes: {{ $article->readtimes }}</span>
-
-                        <form action="{{ route('love') }}" method="POST">
+				    	<h3 style="margin-bottom:2px;">{{ $article->title }}</h3>
+				    	<div class="list-group-content">
+				    		<span class="label label-primary" style="margin-top:7px;margin-bottom: 12px;float:left;">readtimes: {{ $article->readtimes }}</span>
+				    		 <form action="{{ route('love') }}" method="POST">
                             {{ csrf_field() }}
-                            <input type="hidden" name="id" value="{{ $article->id }}">
-							<button type="submit" class="btn btn-sm btn-danger pull-right"><i class="fa fa-heart-o" aria-hidden="true"></i>{{ $article->love }}</button>
-                        </form>
+	                            <input type="hidden" name="id" value="{{ $article->id }}">
+								<button type="submit" class="btn btn-sm btn-danger pull-right" style="padding:0px;display:block;width:24px;height:24px;text-align:center;line-height:24px;"><i class="fa fa-heart-o" aria-hidden="true"></i>{{ $article->love }}</button>
+                        	</form>
 
                         <form action="{{ route('unlove') }}" method="POST">
                             {{ csrf_field() }}
 							<input type="hidden" name="id" value="{{ $article->id }}">
-							<button type="submit" class="btn btn-sm btn-success pull-right"><i class="fa fa-thumbs-down" aria-hidden="true"></i>{{ $article->unLove }}</button>
+							<button type="submit" class="btn btn-sm btn-success pull-right" style="padding:0px;display:block;width:24px;height:24px;text-align:center;line-height:24px;"><i class="fa fa-thumbs-down" aria-hidden="true"></i>{{ $article->unLove }}</button>
                         </form>
+				      </div>
 				    </p>
 				  </a>
 				</div>
