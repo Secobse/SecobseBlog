@@ -53,11 +53,11 @@
 </head>
 
 <body>
-  @if(Session::has('status'))
-	  <div class="alert alert-success">{{ Session::get('status') }}</div>
-  @endif
-<div class="container">
 
+<div class="container">
+	@if(Session::has('status'))
+		<div class="alert alert-danger">{{ Session::get('status') }}</div>
+	@endif
 	<form class="form-signin" role="form" action="/admin/login" method="post">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<h2 class="form-signin-heading">Login Backend</h2>

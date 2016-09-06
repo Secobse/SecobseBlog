@@ -60,12 +60,12 @@ class AdminHomeController extends Controller
 				}
 				else
 				{
-					$request->session()->flash('status','Password is not true!');
+					$request->session()->flash('status','Warning! Password is not true!');
 					return view('admin.login');
 				}
 			}
 			else{
-					$request->session()->flash('status', 'You are not Admin!');
+					$request->session()->flash('status', 'Warning! You are not Admin!');
 					return Redirect('admin/login');
 			}
 	}
