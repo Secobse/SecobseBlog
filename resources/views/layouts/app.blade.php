@@ -12,7 +12,11 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="/images/logo.png">
+
+    <link href="/css/home.css" rel="stylesheet">
+
     @yield('css')
 
     <!-- Scripts -->

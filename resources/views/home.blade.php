@@ -18,9 +18,11 @@
                 </div>
 
                 <div class="panel-body">
-                    <button class="btn btn-sm btn-success">Create A Blog</button></a>
+                    <div class="text-align">
+                        <button class="btn btn-sm btn-success">Create A Blog</button></a>
+                    </div>
                     <hr />
-                    <form action="/profile" method="POST" enctype="multipart/form-data">
+                    <form class="form" action="/profile" method="POST" enctype="multipart/form-data">
                         <label for="update">Update Profile Image</label>
                         <input type="file" name="avatar">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
