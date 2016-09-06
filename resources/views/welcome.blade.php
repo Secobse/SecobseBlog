@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/welcome.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo.png">
     @yield('css')
 
     <!-- Scripts -->
