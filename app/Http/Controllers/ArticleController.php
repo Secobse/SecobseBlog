@@ -31,7 +31,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest('created_at')->Paginate(5);
+        $articles = Article::latest('created_at')->Paginate(6);
         $readered = Article::where('readtimes', '>', 0)->get()->sortBy('readtimes')->reverse()->slice(0, 5);
         $loved = Article::where('love', '>', 0)->get()->sortBy('love')->reverse()->slice(0, 5);
         $updated = Article::all()->sortBy('updated_at')->reverse()->slice(0, 5);
@@ -147,117 +147,4 @@ class ArticleController extends Controller
         return redirect('/home');
     }
 
-    /**
-     * love the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @param  string $user
-     * @return \Illuminate\Http\Response
-     */
-    public function love(Request $request)
-    {
-        $id = $request->input('id');
-        $user = Auth::user()->name;
-
-        $article = Article::findOrFail($id);
-
-        if ($vote = Vote::where('articleId', $id)
-                            ->where('user', $user)
-                            ->first()) {
-            if ($vote->isLove == 1) {
-
-                $request->session()->flash('error','remove love it');
-
-                Vote::where('user', $user)
-                        ->where('articleId', $id)
-                        ->update(['isLove' => 0]);
-
-                $article->love -= 1;
-
-                $article->save();
-
-            } else {
-
-                Vote::where('user', $user)
-                        ->where('articleId', $id)
-                        ->update(['isLove' => 1]);
-
-                $article->love += 1;
-
-                $article->save();
-            }
-
-        } else {
-            $vote = Vote::firstOrCreate([
-                'user' => $user,
-                'articleId' => $id,
-                'isLove' => 1,
-                'isUnLove' => 0,
-            ]);
-
-            $article->love += 1;
-
-            $article->save();
-        }
-
-        return redirect('/articles');
-    }
-
-    /**
-     * unlove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function unLove(Request $request)
-    {
-        $id = $request->input('id');
-        $user = Auth::user()->name;
-
-        $article = Article::findOrFail($id);
-
-        if ($vote = Vote::where('user', $user)
-                            ->where('articleId', $id)
-                            ->first()) {
-            if ($vote->isUnLove == 1) {
-
-                $request->session()->flash('error','remove unlove it');
-
-                Vote::where('user', $user)
-                        ->where('articleId', $id)
-                        ->update(['isUnLove' => 0]);
-
-                $article->unLove -= 1;
-
-                $article->save();
-
-            } else {
-
-                Vote::where('user', $user)
-                        ->where('articleId', $id)
-                        ->update(['isUnLove' => 1]);
-
-                $article->unLove += 1;
-
-                $article->save();
-
-            }
-
-        } else {
-
-            $vote = Vote::firstOrCreate([
-                'user' => $user,
-                'articleId' => $id,
-                'isLove' => 0,
-                'isUnLove' =>1,
-            ]);
-
-            $article->unLove += 1;
-
-            $article->save();
-        }
-
-        return redirect('/articles');
-    }
 }

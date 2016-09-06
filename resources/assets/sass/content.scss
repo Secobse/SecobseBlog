@@ -40,37 +40,36 @@
 
 // modified love and unlove height
 .pull-right {
-  margin-top: -5px;
+  margin-top: -1px;
 }
-
-// //sideleaderBorder style
-// // $sideborder_backgound: #585d61;
-// $sideborder_color:#EAEEF1;
-// $sideborder_listcolor:#EAEEF1;
-// //reset rank active style
-// .tab_card {
-//   // background-color:$sideborder_backgound;
-//   border-radius: 5px;
-//   .nav-pills {
-//   li{
-//     color:$sideborder_color;
-//     a{
-//       color:$sideborder_color;
-//       }
-//     }
-//   }
-// }
-// .tab-pane {
-//   //background-color:$sideborder_backgound;
-// }
-// .nav>li>a:hover {
-//   background-color:#797b7c;
-//   display: block;
-//   width: auto;
-// }
-// .table {
-//   color:$sideborder_listcolor;
-// }
+.pull-right_create{
+  float:right;
+  @media screen and(max-width:400px){
+  float:left;
+  }
+}
+.label-info{
+  margin-top: 0px;
+  margin-bottom: 12px;
+  @media screen and(max-width: 435px){
+    margin-top:1px;
+  }
+  @media screen and(max-width:414px){
+    margin-top:-3px;
+  }
+  @media screen and(max-width: 411px){
+    margin-top:-1px;
+  }
+  @media screen and(max-width:375px){
+    margin-top:10px;
+  }
+  @media screen and(max-width:360px){
+  margin-top:10px;
+  }
+  @media screen and(max-width: 320px){
+    margin-top:10px;
+  }
+}
 .navbar-brand{
   float: none;
   position: absolute;
@@ -85,7 +84,7 @@
   }
   @media screen and (max-width:360px){
     position:absolute;
-    left:35%;
+    left:27%;
   }
   @media screen and (max-width:320px){
     position:absolute;
@@ -100,4 +99,11 @@
     height: 100%;
     background-size: cover;
     overflow: hidden;
+}
+.panel-default > .panel-heading{
+  color: #f9f8f8;
+  background-color: #a9a4a4;
+}
+.panel-body{
+  background-color: #b3aaaa;
 }
