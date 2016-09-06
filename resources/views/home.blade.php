@@ -52,6 +52,12 @@
                             {{ method_field('DELETE') }}
                         </form>
                         @endforeach
+                        <nav>
+                          <ul class="pager">
+                            <li class="previous"><a href="{{ $userArticles->previousPageUrl() }}">&larr; Older</a></li>
+                            <li class="next"><a href="{{ $userArticles->nextPageUrl() }}">Newer &rarr;</a></li>
+                          </ul>
+                        </nav>
                     </ul>
                 </div>
             </div>
