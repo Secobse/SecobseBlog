@@ -29,12 +29,12 @@
 			@foreach($articles as $article)
 				<div class="list-group">
 				  <a href="{{ url('articles', $article->id) }}" class="list-group-item">
-				    <h4 class="list-group-item-heading">Author: {{ $article->username }}
-						<span class="label label-info pull-right">created-time: {{ $article->created_at }}</span>
+				    <h4 class="list-group-item-heading" style="margin-bottom:-13px;">Author: {{ $article->username }}
+						<span class="label label-info pull-right_create">created-time: {{ $article->created_at }}</span>
 				    </h4>
 				    <p class="list-group-item-text">
 				    	<h3>{{ $article->title }}</h3>
-						<span class="label label-primary">readtimes: {{ $article->readtimes }}</span>
+						<span class="label label-primary" style="margin-top:16px;margin-bottom: 12px;">readtimes: {{ $article->readtimes }}</span>
 
                         <form action="{{ route('love') }}" method="POST">
                             {{ csrf_field() }}
