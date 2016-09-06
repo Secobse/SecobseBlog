@@ -4,13 +4,13 @@
 {{ $article->title }}
 @endsection
 @section('content')
-<div class="container">
+<div class="container" style="padding-top:50px;">
 	<div class="row">
 		@if(Session::has('status'))
-				<div class="alert alert-success">
-						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
-						{{ Session::get('status') }}
-				</div>
+			<div class="alert alert-success">
+					<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+					{{ Session::get('status') }}
+			</div>
 		@endif
 		<div class="col-md-6 col-md-offset-3">
 			<h1>{{ $article->title }}</h1>
@@ -21,7 +21,7 @@
 				<hr>
 
 				<article>
-					<div class="body">
+					<div class="body" style="text-indent:2em;">
 						@MarkDown($article->content)
 					</div>
 				</article>
