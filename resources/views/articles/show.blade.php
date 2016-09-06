@@ -4,7 +4,7 @@
 {{ $article->title }}
 @endsection
 @section('content')
-<div class="container" style="padding-top:50px;">
+<div class="container">
 	<div class="row">
 		@if(Session::has('status'))
 			<div class="alert alert-success">
