@@ -5,21 +5,6 @@
 @section('content')
 <div style="background: #fff;">
 <a href="javascript:;" class="scrolltop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-<script type="text/javascript">
-	$(function(){
-		$(window).scroll(function(){
-			var t=$(this).scrollTop();
-			if(t>200){
-				$(".scrolltop").stop().fadeIn();
-			}else{
-				$(".scrolltop").stop().fadeOut();
-			}
-		})
-		$(".scrolltop").click(function(){
-			$("html,body").stop().animate({scrollTop:0},300)
-		})
-		});
-	</script>
 <div class="container">
 	<div class="jumbotron" style="margin-top: 70px;">
 	<div style="color: white;">
