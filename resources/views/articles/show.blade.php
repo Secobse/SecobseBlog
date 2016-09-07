@@ -5,6 +5,7 @@
 @endsection
 @section('content')
 <div style="background-color:#fff;">
+<a href="javascript:;" class="scrolltop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
 <div class="container">
 	<div class="row">
 		@if(Session::has('status'))
@@ -60,6 +61,19 @@
 
 @section('js')
 <script type="text/javascript">
-		$('div.alert').not('.alert-important').delay(3000).slideUp(500);
+		$(function(){
+			$('div.alert').not('.alert-important').delay(3000).slideUp(500);
+			$(window).scroll(function(){
+				var t=$(this).scrollTop();
+				if(t>200){
+					$(".scrolltop").stop().fadeIn();
+				}else{
+					$(".scrolltop").stop().fadeOut();
+				}
+			})
+			$(".scrolltop").click(function(){
+				$("html,body").stop().animate({scrollTop:0},300)
+			})
+		});
 </script>
 @endsection
