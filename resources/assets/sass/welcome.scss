@@ -141,7 +141,7 @@ nav {
         top: 12.5vw;
         left: 45%;
         p {
-            margin: 4px 0 -75px;
+            margin: 0.4vw 0 -5.5vw;
         }
     }
 }
@@ -205,7 +205,9 @@ one content page
                      right: 1px solid rgba(120, 117, 117, .5);
                  }
              }
+         }
 
+         .col-md-offset-6 {
              .wel-content-finger {
                  opacity: .3;
                  display: inline-block;
@@ -213,17 +215,15 @@ one content page
                      size: 2.5vw;
                  }
                  position: relative;
-                 left: -4%;
-                 top: 2vw;
+                 left: -2vw;
                  p {
-                     margin: 4px 0 -75px;
+                     margin: 0.4vw 0 -5.5vw;
                      color: black;
                  }
              }
-         }
-     }
- }
-
+        }
+    }
+}
 
 /*
 two content page
@@ -231,7 +231,7 @@ two content page
 
 .two-container {
     .container {
-        height: 680px;
+        height: 55vw;
         width: auto;
         position: relative;
         background: {
