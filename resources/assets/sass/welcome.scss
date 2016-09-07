@@ -17,6 +17,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+@mixin icon-center {
+    margin-left: 40%;
+}
+@mixin text-center {
+    text-align: center;
+}
 
 nav {
     width: 100%;
@@ -95,6 +101,9 @@ nav {
 
 .header-name {
     @include header;
+    margin: {
+        left: -30px !important;
+    }
     font: {
         size: 3.5vw;
         style: oblique;
@@ -109,13 +118,32 @@ nav {
 }
 
 .header-content {
-    @include vertical-center;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
     font: {
-        size: 4vw;
+        size: 4.7vw;
         style: oblique;
         weight: 400;
     }
     color: #fff;
+
+    .wel-header-finger {
+        color: white;
+        opacity: .5;
+        font: {
+            size: 2.5vw;
+        }
+        display: block;
+        position: relative;
+        top: 12.5vw;
+        left: 45%;
+        p {
+            margin: 4px 0 -75px;
+        }
+    }
 }
 
 
@@ -128,7 +156,7 @@ nav {
 one content page
  */
  .one-container {
-     height: 800px;
+     height: 880px;
      z-index: 100;
      background: {
          color: #FDFDFD;
@@ -163,10 +191,33 @@ one content page
              }
              margin: 20px;
              padding: 30px;
+             .col-md-4 {
+                 i {
+                     @include icon-center;
+                 }
+                 h4 {
+                     @include text-center;
+                 }
+             }
              .middle {
                  border: {
                      left: 1px solid rgba(120, 117, 117, .5);
                      right: 1px solid rgba(120, 117, 117, .5);
+                 }
+             }
+
+             .wel-content-finger {
+                 opacity: .3;
+                 display: inline-block;
+                 font: {
+                     size: 2.5vw;
+                 }
+                 position: relative;
+                 left: -4%;
+                 top: 2vw;
+                 p {
+                     margin: 4px 0 -75px;
+                     color: black;
                  }
              }
          }
@@ -180,7 +231,7 @@ two content page
 
 .two-container {
     .container {
-        height: 600px;
+        height: 680px;
         width: auto;
         position: relative;
         background: {
@@ -190,6 +241,7 @@ two content page
             text-align: center;
             @include vertical-center;
             h1 {
+                padding-bottom: 200px;
                 font: {
                     size: 4vw;
                     weight: bold;
