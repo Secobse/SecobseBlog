@@ -86,7 +86,12 @@
             </div>
         </div>
         <div class="header-content">
-            Because square pegs don't fit in round holes.
+            <p>Because square pegs don't fit in round holes.</p>
+            <a href="#oneContainer" class="wel-header-finger">
+                <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+            </a>
         </div>
     </nav>
     <!-- login -->
@@ -256,7 +261,7 @@
 
 
     <!-- content -->
-    <div class="one-container">
+    <div class="one-container" id="oneContainer">
         <!-- first block -->
         <div class="container">
             <div class="main-heading">
@@ -267,7 +272,7 @@
         <!-- second block -->
         <div class="container">
             <div class="row">
-                <div class="col-md-4 ">
+                <div class="col-md-4">
                     <i class="fa fa-desktop fa-3x" aria-hidden="true"></i>
                     <h4>Online web personalisation</h4>
                     <p>
@@ -289,16 +294,24 @@
                         Deliver content directly to where your customers are. Based on location, time, weather and social grade.
                     </p>
                 </div>
+
+                <div class="col-md-offset-6">
+                    <a href="#twoContainer" class="wel-content-finger">
+                        <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                        <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                        <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="two-container">
+    <div class="two-container" id="twoContainer">
         <div class="container">
             <div class="row">
                 <h1>Can Explore SecobseBlog</h1>
                 <div class="col-md-8 col-md-offset-2">
-                    <a href="http://localhost:8000/articles"><i class="fa fa-hand-pointer-o fa-5x" aria-hidden="true"></i></a>
+                    <a href="http://localhost:8000/articles" style="color: #333;"><i class="fa fa-hand-o-right fa-5x" aria-hidden="true">GO</i></a>
                 </div>
             </div>
         </div>
@@ -311,7 +324,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    　　<h3>Find on our github</h3>
+                    　　<h3>Find us on our github</h3>
                        <ul class="social">
                             <li><a href="https://github.com/G1enY0ung">G1enY0ung</a></li>
                             <li><a href="https://github.com/Gasbylei">Gasbylei</a></li>
@@ -326,13 +339,14 @@
         <!-- footer bottom -->
         <div class="footer-bottom">
             <div class="container">
-                <p class="pull-left"> Copyright © Secobse. All right reserved. </p>
+                <p class="pull-left"> Copyright © Secobse. 2016  All right reserved. </p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/slide.js"></script>
 
 </body>
 </html>
