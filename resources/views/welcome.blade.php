@@ -294,14 +294,16 @@
                         Deliver content directly to where your customers are. Based on location, time, weather and social grade.
                     </p>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-offset-6">
-                    <a href="#twoContainer" class="wel-content-finger">
-                        <p><span class="glyphicon glyphicon-chevron-down"></span></p>
-                        <p><span class="glyphicon glyphicon-chevron-down"></span></p>
-                        <p><span class="glyphicon glyphicon-chevron-down"></span></p>
-                    </a>
-                </div>
+        <div class="container">
+            <div class="col-md-offset-6">
+                <a href="#twoContainer" class="wel-content-finger">
+                    <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                    <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                    <p><span class="glyphicon glyphicon-chevron-down"></span></p>
+                </a>
             </div>
         </div>
     </div>
@@ -324,7 +326,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    　　<h3>Find us on our github</h3>
+                    　　<h3>Find us on github</h3>
                        <ul class="social">
                             <li><a href="https://github.com/G1enY0ung">G1enY0ung</a></li>
                             <li><a href="https://github.com/Gasbylei">Gasbylei</a></li>
