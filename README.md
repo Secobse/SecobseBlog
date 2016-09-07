@@ -84,3 +84,7 @@ every time you pull the update, you must read the commit log to execute optional
 By default, you can sign up a [mailtrap.io](https://mailtrap.io) and test for free.Happy use it!
 You need update you MAIL*** in your **.env** file.For mailtrap you only need a username and a
 password.
+
+#### 2016.9.2 Update:
+
+> Add admin manage, you must go into the database, manually set users->isadmin to `1`, then you can login as admin.[localhost:8000/admin](http://localhost:8000/admin)
