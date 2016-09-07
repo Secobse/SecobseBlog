@@ -9,7 +9,7 @@
 @section('content')
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<form action="{{ route('articles.update', $article->id) }}" method="POST" class="form-horizontal">
+		<form action="{{ route('articleAdminUpdate', $article->id) }}" method="POST" class="form-horizontal">
 			{{ method_field('PUT') }}
 			{{ csrf_field() }}
 			<div class="form-group">

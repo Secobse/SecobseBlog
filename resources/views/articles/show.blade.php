@@ -4,7 +4,9 @@
 {{ $article->title }}
 @endsection
 @section('content')
-<div class="container" style="padding-top:50px;">
+<div style="background-color:#fff;">
+<a href="javascript:;" class="scrolltop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+<div class="container">
 	<div class="row">
 		@if(Session::has('status'))
 			<div class="alert alert-success">
@@ -12,24 +14,23 @@
 					{{ Session::get('status') }}
 			</div>
 		@endif
-		<div class="col-md-6 col-md-offset-3">
-			<h1>{{ $article->title }}</h1>
-				<em>Date:({{ $article->published_at }})</em>
+		<div class="col-md-8 col-md-offset-2 article_show_item">
+			<h1 style="text-align:center;">{{ $article->title }}</h1>
+			<hr style="border-width:2px;border-top-color:rgba(125, 116, 122, 0.98)">
+				<em style="font-size:14px;margin-right:60%;">Date:({{ $article->published_at }})</em>
 
-				<em>Author: <a href="/profile/{{ $article->username }}">{{ $article->username }}</a></em>
-
-				<hr>
-
-				<article>
-					<div class="body" style="text-indent:2em;">
+				<em style="font-size:14px;">Author: <a href="/profile/{{ $article->username }}">{{ $article->username }}</a></em>
+					
+				<article style="margin-top:20px">
+					<div class="body">
 						@MarkDown($article->content)
+						<hr class="article-show_footline">
 					</div>
 				</article>
 		</div>
 	</div>
 
-	<hr>
-	<button class="btn btn-primary" onclick="history.go(-1)">
+	<button class="btn btn-default" onclick="history.go(-1)">
 		« Back
 	</button>
 
@@ -55,10 +56,24 @@
 	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 	<script id="dsq-count-scr" src="//secobse.disqus.com/count.js" async></script>
 </div>
+</div>
 @endsection
 
 @section('js')
 <script type="text/javascript">
-		$('div.alert').not('.alert-important').delay(3000).slideUp(500);
+		$(function(){
+			$('div.alert').not('.alert-important').delay(3000).slideUp(500);
+			$(window).scroll(function(){
+				var t=$(this).scrollTop();
+				if(t>200){
+					$(".scrolltop").stop().fadeIn();
+				}else{
+					$(".scrolltop").stop().fadeOut();
+				}
+			})
+			$(".scrolltop").click(function(){
+				$("html,body").stop().animate({scrollTop:0},300)
+			})
+		});
 </script>
 @endsection

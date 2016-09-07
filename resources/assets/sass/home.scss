@@ -1,0 +1,32 @@
+/**
+ * home content page
+ */
+@mixin margin-top {
+    margin-top: 50px;
+}
+
+.container {
+    .panel {
+        @include margin-top;
+        .panel-body {
+            .text-align {
+                text-align: center;
+            }
+        .form {
+            height: 230px;
+            padding: 7.5vw;
+        }
+        }
+    }
+    .row {
+        @include margin-top;
+    }
+}
+
+.row {
+    @include margin-top;
+    padding: 20px;
+    .create-article {
+        @include margin-top;
+    }
+}
