@@ -53,7 +53,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/articles') }}" style="color: black; font-weight: bold; font-size: 16px;">Articles</a></li>
+                    <li><a href="{{ url('') }}" style="color: black; font-weight: bold; font-size: 16px;">Articles</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
