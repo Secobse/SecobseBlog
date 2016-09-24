@@ -20,7 +20,7 @@
 				<em style="font-size:14px;margin-right:60%;">Date:({{ $article->published_at }})</em>
 
 				<em style="font-size:14px;">Author: <a href="/profile/{{ $article->username }}">{{ $article->username }}</a></em>
-					
+
 				<article style="margin-top:20px">
 					<div class="body">
 						@MarkDown($article->content)

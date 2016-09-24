@@ -86,7 +86,8 @@
             </div>
         </div>
         <div class="header-content">
-            <p>Because square pegs don't fit in round holes.</p>
+            <p style="text-align: center;">Show you</p>
+            <p>personal thoughting</p>
             <a href="#oneContainer" class="wel-header-finger">
                 <p><span class="glyphicon glyphicon-chevron-down"></span></p>
                 <p><span class="glyphicon glyphicon-chevron-down"></span></p>
@@ -280,7 +281,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 middle">
-                    <i class="fa fa-shopping-cart fa-3x" aria-hidden+"true"></i>
+                    <i class="fa fa-pencil fa-3x" aria-hidden+"true"></i>
                     <h4>eCommerce / CRM</h4>
                     <p>
                         Use your customer data to tailor content. Amount spent, returning customer or any other custom variables from your CRM.
@@ -311,7 +312,7 @@
     <div class="two-container" id="twoContainer">
         <div class="container">
             <div class="row">
-                <h1>Can Explore SecobseBlog</h1>
+                <h1>Explore SecobseBlog</h1>
                 <div class="col-md-8 col-md-offset-2">
                     <a href="http://localhost:8000/articles" style="color: #333;"><i class="fa fa-hand-o-right fa-5x" aria-hidden="true">GO</i></a>
                 </div>
