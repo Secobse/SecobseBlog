@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $userArticles = Article::userArticles()->orderBy('published_at')->Paginate(5);
-        return view('home', ['userArticles' => $userArticles]);
+    	$userArticles = Article::userArticles()->orderBy('published_at')->Paginate(5);
+		$tags = Article::UserTags()->distinct()->get();
+        return view('home', compact('userArticles','tags'));
     }
 }

@@ -20,7 +20,8 @@ class ArticleController extends Controller
    public function index()
    {
        $articles = Article::latest('published_at')->Paginate(7);
-       return view('admin.article.index',compact('articles'));
+	   $tags = Article::UserTags()->get();
+       return view('admin.article.index',compact('articles','tags'));
    }
 
    /**

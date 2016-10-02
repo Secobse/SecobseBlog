@@ -55,15 +55,28 @@
                         </form>
                         @endforeach
                         <nav>
-                          <ul class="pager">
-                            <li class="previous"><a href="{{ $userArticles->previousPageUrl() }}">&larr; Older</a></li>
-                            <li class="next"><a href="{{ $userArticles->nextPageUrl() }}">Newer &rarr;</a></li>
-                          </ul>
+                            {{$userArticles->render()}}
                         </nav>
                     </ul>
                 </div>
             </div>
         </div>
+          <div class="col-md-6">
+              <div class="panel panel-default">
+                  <div class="panel-heading">My Tags</div>
+                  <div class="panel-body">
+                      @if($tags->isEmpty())
+                          You don't hava tags!
+                          @else
+                          <em>Tags:<i class="glyphicon glyphicon-tags"></i>
+                              @foreach($tags as $tag)
+                                  <a href="{{url('tag/'.$tag->id.'/articles')}}">{{ $tag->name }}&nbsp;</a>
+                              @endforeach
+                          </em>
+                      @endif
+                  </div>
+              </div>
+          </div>
     </div>
 </div>
 @endsection
