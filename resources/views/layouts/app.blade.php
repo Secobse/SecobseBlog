@@ -13,6 +13,10 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+
+    <link href="/css/select2.css" rel="stylesheet" />
+    <link href="/css/select2-bootstrap.css" rel="stylesheet" />
+
     <link rel="shortcut icon" href="/images/logo.png">
 
     <link href="/css/home.css" rel="stylesheet">

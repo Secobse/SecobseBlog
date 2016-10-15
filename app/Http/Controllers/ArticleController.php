@@ -8,8 +8,9 @@ use App\Http\Requests;
 
 use Auth;
 use App\Article;
+use App\Tag;
 use App\Vote;
-use DB;
+use Illuminate\Support\Facades\DB;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
 class ArticleController extends Controller
@@ -45,7 +46,8 @@ class ArticleController extends Controller
 	 */
 	public function create()
 	{
-		return view('articles.createArticle');
+		$tags = Tag::all();
+		return view('articles.createArticle',compact('tags'));
 	}
 
 	/**
@@ -70,9 +72,11 @@ class ArticleController extends Controller
 			'username' => Auth::user()->name,
 		]);
 
+		$article->tags()->attach($request->input('tags'));
+
 		session()->flash('status', 'Article has been published successfully!');
 
-		return redirect('/articles');
+		return redirect('/');
 	}
 
 	/**
@@ -103,7 +107,8 @@ class ArticleController extends Controller
 	public function edit($id)
 	{
 		$article = Article::findOrFail($id);
-		return view('articles.edit', compact('article'));
+		$tags = Tag::all();
+		return view('articles.edit', compact('article','tags'));
 	}
 
 	/**
@@ -124,6 +129,8 @@ class ArticleController extends Controller
 		$article->content = $request->input('mdContent');
 
 		$article->save();
+
+		$article->tags()->sync($request->input('tags'));
 
 		session()->flash('status', 'Article has been updated successfully!');
 

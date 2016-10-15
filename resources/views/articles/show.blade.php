@@ -17,10 +17,16 @@
 		<div class="col-md-8 col-md-offset-2 article_show_item">
 			<h1 style="text-align:center;">{{ $article->title }}</h1>
 			<hr style="border-width:2px;border-top-color:rgba(125, 116, 122, 0.98)">
-				<em style="font-size:14px;margin-right:60%;">Date:({{ $article->published_at }})</em>
+			<i class="glyphicon glyphicon-calendar"></i><em style="font-size:14px;margin-right:60%;">Date:({{ $article->published_at }})</em>
 
-				<em style="font-size:14px;">Author: <a href="/profile/{{ $article->username }}">{{ $article->username }}</a></em>
-
+			<i class="glyphicon glyphicon-user"></i><em style="font-size:14px;">Author: <a href="/profile/{{ $article->username }}">{{ $article->username }}</a></em>
+			@unless($article->tags->isEmpty())
+				<em>Tags:<i class="glyphicon glyphicon-tags"></i>
+					@foreach($article->tags as $tag)
+						<a href="{{url('tag/'.$tag->id.'/articles')}}">{{ $tag->name }}&nbsp;</a>
+					@endforeach
+				</em>
+			@endunless
 				<article style="margin-top:20px">
 					<div class="body">
 						@MarkDown($article->content)

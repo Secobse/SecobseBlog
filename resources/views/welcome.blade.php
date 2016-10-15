@@ -34,7 +34,15 @@
                                     <span class="label label-info pull-right_create">created-time: {{ $article->created_at }}</span>
                                 </h4>
                                 <p class="list-group-item-text">
-                                <h3 style="margin-bottom:16px;margin-top: 32px;">{{ $article->title }}</h3>
+                                <h3 style="margin-bottom:16px;margin-top: 32px;">{{ $article->title }}
+                                    @unless($article->tags->isEmpty())
+                                    @foreach ($article->tags as $tag)
+                                        <span class="label label-success">
+										{{ $tag->name }}
+										</span>&nbsp;
+                                    @endforeach
+                                    @endunless
+                                </h3>
                                 <div class="list-group-content">
 									<span class="label label-primary"
                                           style="float:left;margin-top:7px;">readtimes: {{ $article->readtimes }}</span>
@@ -61,10 +69,7 @@
                         </div>
                     @endforeach
                     <nav>
-                        <ul class="pager">
-                            <li class="previous"><a href="{{ $articles->previousPageUrl() }}">&larr; Older</a></li>
-                            <li class="next"><a href="{{ $articles->nextPageUrl() }}">Newer &rarr;</a></li>
-                        </ul>
+                       {{$articles->render()}}
                     </nav>
                 </div>
 

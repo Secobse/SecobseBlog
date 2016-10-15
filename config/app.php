@@ -185,7 +185,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

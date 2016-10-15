@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Articles')
+@section('title', 'Tag|Articles')
 
 @section('content')
 	<div style="background: #fff;">
@@ -26,6 +26,7 @@
 				@endif
 
 				<div class="col-md-7">
+					<blockquote>Tag: <span class="label label-success">{{{ $tag->name }}}</span></blockquote>
 					@foreach($articles as $article)
 						<div class="list-group">
 							<a href="{{ url('articles', $article->id) }}" class="list-group-item artilce_transform">
@@ -66,10 +67,7 @@
 						</div>
 					@endforeach
 					<nav>
-						<ul class="pager">
-							<li class="previous"><a href="{{ $articles->previousPageUrl() }}">&larr; Older</a></li>
-							<li class="next"><a href="{{ $articles->nextPageUrl() }}">Newer &rarr;</a></li>
-						</ul>
+						{{$articles->render()}}
 					</nav>
 				</div>
 

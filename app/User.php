@@ -40,4 +40,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Article');
     }
+
+	public function tags()
+	{
+		return $this->hasMany('App\Tag');
+	}
 }
+
