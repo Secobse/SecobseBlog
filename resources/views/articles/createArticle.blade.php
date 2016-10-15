@@ -31,11 +31,11 @@
 				<div class="form-group">
 					<label for="tags" class="col-md-2 control-label">Tags</label>
 					<div class="col-md-4">
-							<select class="form-control" multiple="multiple" name="tags[]">
-								@foreach($tags as $tag)
+						<select class="form-control" multiple="multiple" name="tags[]">
+							@foreach($tags as $tag)
 								<option value="{{ $tag->id }}">{{$tag->name}}</option>
-								@endforeach
-							</select>
+							@endforeach
+						</select>
 						@if ($errors->has('tags'))
 							<div class="alert alert-danger">
 								<strong>{{ $errors->first('tags') }}</strong>
@@ -61,14 +61,13 @@
 	<script src="/js/select2.js"></script>
 	<script type="text/javascript">
 		$("select").select2({
-			tags: "true",
+			tags: 'true',
 			maximumSelectionLength: 5,
 			placeholder: "Select tags",
 			theme: "bootstrap"
 		});
 	</script>
 	<script>
-
 		var simplemde = new SimpleMDE({
 			element: $("#ID")[0]
 		});
