@@ -62,7 +62,7 @@
 
 @section('js')
 	<script src="/js/simplemde.min.js"></script>
-	<script src="/js/select2.js"></script>
+	<script src="/js/select2.min.js"></script>
 	<script type="text/javascript">
 		$("select").select2({
 			tags: "true",
