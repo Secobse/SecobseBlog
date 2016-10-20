@@ -13,6 +13,20 @@ require('laravel-elixir-vue');
  |
  */
 
+/*
+
+Gulp, 流式构建系统
+下面的代码告诉你,gulp帮助你引入了静态文件,编译sass文件, js文件
+
+仔细查看resources目录和public目录, 相信你会有收获
+
+具体详细说明,一言两语说不清,你需要仔细阅读
+https://laravel.com/docs/5.3/frontend
+
+以及sass documentation, node, npm, webpack, etc.
+
+*/
+
 elixir(mix => {
     mix.sass(['app.scss', 'content.scss', 'offer.scss'])
        .sass('welcome.scss', 'public/css')

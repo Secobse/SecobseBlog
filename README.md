@@ -2,6 +2,11 @@
 
 This is our team's blog.
 
+### 须知: develop分支现在加上了第一版的注释,已经不在作为开发版本使用
+### 项目目录结构参考[structure-documentation](https://laravel.com/docs/5.3/structure)
+### vender目录是涉及到composer的, node_modules涉及到npm
+### **重点**: 必须看文档,英文版的,具体原因自己理解
+
 #### we use
 
 - php5.6
