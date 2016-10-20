@@ -29,7 +29,7 @@ Route::post('love', 'VoteController@love')->name('love')->middleware('auth');
 Route::post('unlove', 'VoteController@unLove')->name('unlove')->middleware('auth');
 
 Route::resource('articles', 'ArticleController');
-Route::get('tag/{id}/articles', 'TagController@articles');
+Route::resource('/tag','TagController');
 
 Route::get('profile/{username}', 'User\UserController@profile');
 Route::post('profile', 'User\UserController@updateAvatar')->middleware('auth');

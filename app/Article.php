@@ -51,7 +51,7 @@ class Article extends Model
 
 		return Carbon::parse($date)->diffForHumans();
 	}
-
+	
 	/**
 	 * Article has many tags
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

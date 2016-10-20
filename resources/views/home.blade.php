@@ -70,7 +70,7 @@
                           @else
                           <em>Tags:<i class="glyphicon glyphicon-tags"></i>
                               @foreach($tags as $tag)
-                                  <a href="{{url('tag/'.$tag->id.'/articles')}}">{{ $tag->name }}&nbsp;</a>
+                                  <a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
                               @endforeach
                           </em>
                       @endif

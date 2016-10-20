@@ -28,7 +28,7 @@
 			    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
 				  <span class="glyphicon glyphicon-tag"></span>
 				  @foreach ($article->tags as $tag)
-					  <a href="{{url('tag/'.$tag->id.'/articles')}}">{{ $tag->name }}&nbsp;</a>
+					  <a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
 				  @endforeach
 			  </div>
 			</div>

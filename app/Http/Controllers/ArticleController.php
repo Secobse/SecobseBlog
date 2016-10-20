@@ -46,7 +46,7 @@ class ArticleController extends Controller
 	 */
 	public function create()
 	{
-		$tags = Tag::all();
+		$tags = Tag::pluck('name','id')->all();
 		return view('articles.createArticle',compact('tags'));
 	}
 
@@ -58,6 +58,7 @@ class ArticleController extends Controller
 	 */
 	public function store(Request $request)
 	{
+//		dd($request->all());
 		$this->validate($request, [
 			'title' => 'required|max:50',
 			'mdContent' => 'required',
@@ -78,7 +79,6 @@ class ArticleController extends Controller
 
 		return redirect('/');
 	}
-
 	/**
 	 * Show single article and author.
 	 *

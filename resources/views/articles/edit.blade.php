@@ -32,12 +32,12 @@
 				<div class="form-group">
 					<label for="tags" class="col-md-2 control-label">Tags</label>
 					<div class="col-md-4">
-						<select class="form-control" multiple="multiple" name="tags[]">
+						<select class="form-control" multiple="multiple" name="tags[]" id="task-list">
 							@foreach($article->tags as $tag)
 								<option value="{{ $tag->id }}" selected="selected">{{$tag->name}}</option>
 							@endforeach
 							@foreach($tags as $tag)
-								<option value="{{$tag->id}}">{{$tag->name}}</option>
+								<option id="tag" value="{{$tag->id}}">{{$tag->name}}</option>
 							@endforeach
 						</select>
 						@if ($errors->has('tags'))
@@ -46,6 +46,7 @@
 						    </span>
 						@endif
 					</div>
+					<button type="button" class="btn btn-primary" id="add">添加标签</button>
 				</div>
 				<div class="form-group">
 					<textarea name="mdContent" id="ID">{{ $article->content }}</textarea>
@@ -57,16 +58,23 @@
 				</div>
 			</form>
 		</div>
+		<div id="debug"></div>
 	</div>
+	{{--modal--}}
+	@include('tags.createtag')
 @endsection
 
 @section('js')
 	<script src="/js/simplemde.min.js"></script>
-	<script src="/js/select2.js"></script>
+	<script src="/js/select2.min.js"></script>
+	<link href="http://cdn.bootcss.com/toastr.js/2.1.3/toastr.min.css" rel="stylesheet">
+	<script src="http://cdn.bootcss.com/toastr.js/2.1.3/toastr.min.js"></script>
+	<script src="{{ asset('js/tag.js') }}"></script>
 	<script type="text/javascript">
 		$("select").select2({
-			tags: "true",
+			tokenSeparators: [",", " "],
 			maximumSelectionLength: 5,
+			placeholder: "Select tags",
 			theme: "bootstrap"
 		});
 	</script>
