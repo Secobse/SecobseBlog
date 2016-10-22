@@ -13,13 +13,8 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
-
-    <link href="/css/select2.min.css" rel="stylesheet" />
-    <link href="/css/select2-bootstrap.min.css" rel="stylesheet" />
-
     <link rel="shortcut icon" href="/images/logo.png">
 
-    <link href="/css/home.css" rel="stylesheet">
 
     @yield('css')
 
@@ -57,7 +52,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('') }}" style="color: black; font-weight: bold; font-size: 16px;">Articles</a></li>
+                    <li><a href="{{ url('') }}" style="color: black; font-weight: bold; font-size: 16px;">Questions</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

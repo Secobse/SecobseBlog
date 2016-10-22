@@ -44,7 +44,7 @@
 				<!-- Left Side Of Navbar -->
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/admin') }}">Home</a></li>
-					<li><a href="{{ url('/admin/articles') }}">Article management</a></li>
+					<li><a href="{{ url('/admin/questions') }}">Question management</a></li>
 					<li><a href="{{ url('/admin/users') }}">User management</a></li>
 				</ul>
 

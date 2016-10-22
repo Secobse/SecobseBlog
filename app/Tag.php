@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-	protected $fillable = ['name',];
+	protected $fillable = ['name'];
 
+	public $timestamps = false;
 	/**
-	 * Tags has many articles
+	 * Tags has many questions
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function articles()
+	public function questions()
 	{
-		return $this->belongsToMany('App\Article');
+		return $this->belongsToMany('App\Question');
 	}
 }

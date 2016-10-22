@@ -8,18 +8,18 @@ use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
-class Article extends Model
+class Question extends Model
 {
-	protected $table = 'articles';
+	protected $table = 'questions';
 
 	protected $fillable = ['title', 'content', 'username'];
 
 	/**
-	 * Scope a query find user articles.
+	 * Scope a query find user questions.
 	 *
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
-	public function scopeUserArticles($query)
+	public function scopeUserQuestions($query)
 	{
 		return $query->where('username', Auth::user()->name);
 	}
@@ -32,9 +32,9 @@ class Article extends Model
 	 */
 	public function scopeUserTags($query)
 	{
-		$query = DB::table('articles')->join('article_tag', 'articles.id', '=', 'article_tag.article_id')
-			->join('tags', 'article_tag.tag_id', '=', 'tags.id')
-			->select('tags.name', 'tags.id')->where('articles.username', '=', Auth::user()->name);
+		$query = DB::table('questions')->join('question_tag', 'questions.id', '=', 'question_tag.question_id')
+			->join('tags', 'question_tag.tag_id', '=', 'tags.id')
+			->select('tags.name', 'tags.id')->where('questions.username', '=', Auth::user()->name);
 		return $query;
 	}
 
@@ -53,11 +53,11 @@ class Article extends Model
 	}
 	
 	/**
-	 * Article has many tags
+	 * Question has many tags
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
 	public function tags()
 	{
-		return $this->belongsToMany('App\Tag')->withTimestamps();
+		return $this->belongsToMany('App\Tag');
 	}
 }

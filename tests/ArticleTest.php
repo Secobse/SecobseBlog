@@ -13,7 +13,7 @@ class ArticleTest extends TestCase
      */
     public function testExample()
     {
-        $response = $this->call('PUT', '/articles/love/2s/G1enY0ung');
+        $response = $this->call('PUT', '/questions/love/2s/G1enY0ung');
 
         $this->assertEquals(302, $response->status());
     }

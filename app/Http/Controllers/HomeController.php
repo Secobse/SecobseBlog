@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Article;
+use App\Question;
 
 class HomeController extends Controller
 {
@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	$userArticles = Article::userArticles()->orderBy('published_at', 'desc')->Paginate(5);
-		$tags = Article::UserTags()->distinct()->get();
-        return view('home', compact('userArticles','tags'));
+    	$userQuestions = Question::userQuestions()->orderBy('published_at', 'desc')->Paginate(5);
+		$tags = Question::UserTags()->distinct()->get();
+        return view('home', compact('userQuestions','tags'));
     }
 }

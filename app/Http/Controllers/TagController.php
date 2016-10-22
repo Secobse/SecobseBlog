@@ -6,18 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Tag;
-use App\Article;
+use App\Question;
 
 class TagController extends Controller
 {
 	public function show($id)
 	{
 		$tag = Tag::find($id);
-		$articles = $tag->articles()->orderBy('created_at')->paginate(6);
-		$readered = Article::where('readtimes', '>', 0)->get()->sortBy('readtimes')->reverse()->slice(0, 5);
-		$loved = Article::where('love', '>', 0)->get()->sortBy('love')->reverse()->slice(0, 5);
-		$updated = Article::all()->sortBy('updated_at')->reverse()->slice(0, 5);
-		return view('tags.articles', compact('tag', 'articles', 'readered', 'loved', 'updated'));
+		$questions = $tag->questions()->orderBy('created_at')->paginate(6);
+		$readered = Question::where('readtimes', '>', 0)->get()->sortBy('readtimes')->reverse()->slice(0, 5);
+		$updated = Question::all()->sortBy('updated_at')->reverse()->slice(0, 5);
+		return view('tags.questions', compact('tag', 'questions', 'readered', 'updated'));
 	}
 
 	public function store(Request $request){

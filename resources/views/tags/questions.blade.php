@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Articles')
+@section('title', 'Tag|Questions')
 
 @section('content')
 	<div style="background: #fff;">
@@ -8,13 +8,13 @@
 		<div class="container">
 			<div class="jumbotron" style="margin-top: 70px;">
 				<div style="color: white;">
-					<h2>Articles
-						<small style="color: white;">Page {{ $articles->currentPage() }}
-							of {{ $articles->lastPage() }}</small>
+					<h2>Questions
+						<small style="color: white;">Page {{ $questions->currentPage() }}
+							of {{ $questions->lastPage() }}</small>
 					</h2>
 					<p style="font-weight: bold;">Let's Begin!</p>
 				</div>
-				<p style="float: right;"><a class="btn btn-primary btn-lg" href="/articles/create" role="button"
+				<p style="float: right;"><a class="btn btn-primary btn-lg" href="/questions/create" role="button"
 				                            style="background: #f46b2c; border: none;">Create One</a></p>
 			</div>
 			<div class="row">
@@ -26,9 +26,10 @@
 				@endif
 
 				<div class="col-md-7">
-					@foreach($articles as $article)
+					<blockquote>Tag: <span class="label label-success">{{{ $tag->name }}}</span></blockquote>
+					@foreach($questions as $article)
 						<div class="list-group">
-							<a href="{{ url('articles', $article->id) }}" class="list-group-item artilce_transform">
+							<a href="{{ url('questions', $article->id) }}" class="list-group-item artilce_transform">
 								<h4 class="list-group-item-heading" style="margin-bottom:-13px;">
 									Author: {{ $article->username }}
 									<span class="label label-info pull-right_create">created-time: {{ $article->created_at }}</span>
@@ -43,33 +44,13 @@
 								<div class="list-group-content">
 									<span class="label label-primary"
 									      style="float:left;margin-top:7px;">readtimes: {{ $article->readtimes }}</span>
-									<form action="{{ route('love') }}" method="POST">
-										{{ csrf_field() }}
-										<input type="hidden" name="id" value="{{ $article->id }}">
-										<button type="submit" class="btn btn-sm btn-danger pull-right"
-										        style="padding:0px;display:block;width:24px;height:24px;text-align:center;line-height:24px;">
-											<i class="fa fa-heart-o" aria-hidden="true"></i>{{ $article->love }}
-										</button>
-									</form>
-
-									<form action="{{ route('unlove') }}" method="POST">
-										{{ csrf_field() }}
-										<input type="hidden" name="id" value="{{ $article->id }}">
-										<button type="submit" class="btn btn-sm btn-success pull-right"
-										        style="padding:0px;display:block;width:24px;height:24px;text-align:center;line-height:24px;">
-											<i class="fa fa-thumbs-down" aria-hidden="true"></i>{{ $article->unLove }}
-										</button>
-									</form>
 								</div>
 								</p>
 							</a>
 						</div>
 					@endforeach
 					<nav>
-						<ul class="pager">
-							<li class="previous"><a href="{{ $articles->previousPageUrl() }}">&larr; Older</a></li>
-							<li class="next"><a href="{{ $articles->nextPageUrl() }}">Newer &rarr;</a></li>
-						</ul>
+						{{$questions->render()}}
 					</nav>
 				</div>
 
@@ -77,8 +58,6 @@
 					@if(Session::has('error'))
 						<div class="alert alert-success">{{ Session::get('error') }}</div>
 					@endif
-
-					@include('articles.sideLeaderBoard')
 				</div>
 			</div>
 		</div>
