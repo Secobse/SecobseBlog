@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Article;
+use App\Question;
 
 class MainPageController extends Controller
 {
@@ -17,10 +17,9 @@ class MainPageController extends Controller
      */
     public function index()
     {
-		$articles = Article::latest('created_at')->Paginate(6);
-		$readered = Article::where('readtimes', '>', 0)->get()->sortBy('readtimes')->reverse()->slice(0, 5);
-		$loved = Article::where('love', '>', 0)->get()->sortBy('love')->reverse()->slice(0, 5);
-		$updated = Article::all()->sortBy('updated_at')->reverse()->slice(0, 5);
-		return view('welcome', compact('articles', 'readered', 'loved', 'updated'));
+		$questions = Question::latest('created_at')->Paginate(6);
+		$readered = Question::where('readtimes', '>', 0)->get()->sortBy('readtimes')->reverse()->slice(0, 5);
+		$updated = Question::all()->sortBy('updated_at')->reverse()->slice(0, 5);
+		return view('main', compact('questions', 'readered', 'loved', 'updated'));
     }
 }

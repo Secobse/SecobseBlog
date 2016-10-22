@@ -18,16 +18,16 @@
 			@endif
 			<p style="position: relative; bottom: 30px; left: 100px;">last time login: {{ $u->updated_at }}</p>
 
-			@foreach($articles as $article)
+			@foreach($questions as $question)
 			<div class="panel panel-default" style="margin-top: 20px;">
 			  <div class="panel-heading">
-			  	<button class="btn btn-sm btn-primary">published-time<span class="badge">{{ $article->published_at }}</span></button>
-				<button class="btn btn-sm btn-warning">updated-time<span class="badge">{{ $article->updated_at }}</span></button>
+			  	<button class="btn btn-sm btn-primary">published-time<span class="badge">{{ $question->published_at }}</span></button>
+				<button class="btn btn-sm btn-warning">updated-time<span class="badge">{{ $question->updated_at }}</span></button>
 			  </div>
 			  <div class="panel-body">
-			    <a href="/articles/{{ $article->id }}">{{ $article->title }}</a>
+			    <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
 				  <span class="glyphicon glyphicon-tag"></span>
-				  @foreach ($article->tags as $tag)
+				  @foreach ($question->tags as $tag)
 					  <a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
 				  @endforeach
 			  </div>
@@ -35,8 +35,8 @@
 			@endforeach
 			<nav>
 			  <ul class="pager">
-			    <li class="previous"><a href="{{ $articles->previousPageUrl() }}">&larr; Older</a></li>
-			    <li class="next"><a href="{{ $articles->nextPageUrl() }}">Newer &rarr;</a></li>
+			    <li class="previous"><a href="{{ $questions->previousPageUrl() }}">&larr; Older</a></li>
+			    <li class="next"><a href="{{ $questions->nextPageUrl() }}">Newer &rarr;</a></li>
 			  </ul>
 			</nav>
 

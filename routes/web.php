@@ -23,12 +23,7 @@ Route::resource('', 'MainPageController', ['only' => [
 	'index'
 ]]);
 
-Route::get('love', 'VoteController@getLove');
-Route::get('unlove', 'VoteController@getUnLove');
-Route::post('love', 'VoteController@love')->name('love')->middleware('auth');
-Route::post('unlove', 'VoteController@unLove')->name('unlove')->middleware('auth');
-
-Route::resource('articles', 'ArticleController');
+Route::resource('questions', 'QuestionController');
 Route::resource('/tag','TagController');
 
 Route::get('profile/{username}', 'User\UserController@profile');
@@ -42,11 +37,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function()
 
 		Route::group(['middleware'=> 'adminAuth'],function(){
 				Route::get('/', 'AdminHomeController@index');
-				Route::get('articles', 'ArticleController@index');
-				Route::put('articles/{article}', 'ArticleController@update')->name('articleAdminUpdate');
-				Route::get('articles/{article}/edit', 'ArticleController@edit')->name('articleAdminEdit');
-				Route::delete('articles/{article}', 'ArticleController@destroy')->name('articleAdminDelete');
-				Route::get('articles/{article}', 'ArticleController@show')->name('articleAdminShow');
+				Route::get('questions', 'QuestionController@index');
+				Route::put('questions/{question}', 'QuestionController@update')->name('questionAdminUpdate');
+				Route::get('questions/{question}/edit', 'QuestionController@edit')->name('questionAdminEdit');
+				Route::delete('questions/{question}', 'QuestionController@destroy')->name('questionAdminDelete');
+				Route::get('questions/{question}', 'QuestionController@show')->name('questionAdminShow');
 				Route::resource('users','UserController', ['only' => ['index', 'edit', 'destroy']]);
 	});
 });

@@ -1,51 +1,57 @@
 @extends('layouts.app')
 
-@section('title', '| Create your new article')
+@section('title', '| Edit your question')
 
 @section('css')
 	<link href="/css/simplemde.min.css" rel="stylesheet">
+	<link href="/css/select2.min.css" rel="stylesheet" />
+	<link href="/css/select2-bootstrap.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2 create-article">
-			<form action="/articles" method="POST" class="form-horizontal">
+	<div class="row" style="margin-top: 200px;">
+		<div class="col-md-8 col-md-offset-2">
+			<form action="/questions/{{ $question->id  }}" method="POST" class="form-horizontal">
+				{{ method_field('PUT') }}
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="title" class="col-md-2 control-label">Title</label>
 					<div class="col-md-4">
 						<div class="input-group">
-							<input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"
-							       autofocus>
+							<input id="title" type="text" class="form-control" name="title"
+							       value="{{ $question->title }}" disabled>
 							@if ($errors->has('title'))
 								<span class="help-block">
 						        <strong>{{ $errors->first('title') }}</strong>
 						    </span>
 							@endif
 							<span class="input-group-btn">
-			            	<button type="submit" class="btn btn-primary">Submit</button>
+			            	<button type="submit" class="btn btn-primary">Save</button>
 			            </span>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="tags" class="col-md-2 control-label">Tags</label>
-					<div class="col-md-4" >
+					<div class="col-md-4">
 						<select class="form-control" multiple="multiple" name="tags[]" id="task-list">
-							@foreach($tags as $id=>$name)
-								<option id="tag" value="{{ $id }}">{{$name}}</option>
+							@foreach($question->tags as $tag)
+								<option value="{{ $tag->id }}" selected="selected">{{$tag->name}}</option>
+							@endforeach
+							@foreach($tags as $tag)
+								<option id="tag" value="{{$tag->id}}">{{$tag->name}}</option>
 							@endforeach
 						</select>
 						@if ($errors->has('tags'))
-							<div class="alert alert-danger">
-								<strong>{{ $errors->first('tags') }}</strong>
-							</div>
+							<span class="help-block">
+						        <strong>{{ $errors->first('tags') }}</strong>
+						    </span>
 						@endif
 					</div>
-						<button type="button" class="btn btn-primary" id="add">添加标签</button>
+					<button type="button" class="btn btn-primary" id="add">添加标签</button>
 				</div>
 				<div class="form-group">
-					<textarea name="mdContent" id="ID"></textarea>
+					<textarea name="mdContent" id="ID">{{ $question->content }}</textarea>
 					@if ($errors->has('mdContent'))
 						<span class="help-block">
 				        <strong>{{ $errors->first('mdContent') }}</strong>
@@ -56,8 +62,7 @@
 		</div>
 		<div id="debug"></div>
 	</div>
-
-	{{--Modal--}}
+	{{--modal--}}
 	@include('tags.createtag')
 @endsection
 
@@ -80,6 +85,4 @@
 			element: $("#ID")[0]
 		});
 	</script>
-
-
 @endsection

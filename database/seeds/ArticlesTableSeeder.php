@@ -12,12 +12,12 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('articles')->insert([
+    	DB::table('questions')->insert([
     		'title' => str_random(10),
     		'content' => str_random(10),
     		'user_id' =>1,
              ]);
-             DB::table('articles')->insert([
+             DB::table('questions')->insert([
                             'title' => str_random(10),
                             'content' => str_random(10),
                             'user_id' =>2,

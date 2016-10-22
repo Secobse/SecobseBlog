@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Article;
+use App\Question;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
-class ArticleController extends Controller
+class QuestionController extends Controller
 {
   /**
     * Show the form for creating a new resource.
@@ -19,24 +19,24 @@ class ArticleController extends Controller
     */
    public function index()
    {
-       $articles = Article::latest('published_at')->Paginate(7);
-	   $tags = Article::UserTags()->get();
-       return view('admin.article.index',compact('articles','tags'));
+       $questions = Question::latest('published_at')->Paginate(7);
+
+       return view('admin.question.index',compact('questions'));
    }
 
    /**
-    * Show  article and author.
+    * Show  question and author.
     *
     * @param  int  $id
     * @return Response
     */
    public function show($id)
    {
-       $article = Article::findOrFail($id);
+       $question = Question::findOrFail($id);
 
-       $article->content = Markdown::convertToHtml($article->content);
+       $question->content = Markdown::convertToHtml($question->content);
 
-       return view('admin.article.show', compact('article'));
+       return view('admin.question.show', compact('question'));
    }
 
    /**
@@ -47,8 +47,8 @@ class ArticleController extends Controller
     */
    public function edit($id)
    {
-       $article = Article::findOrFail($id);
-       return view('admin.article.edit', compact('article'));
+       $question = Question::findOrFail($id);
+       return view('admin.question.edit', compact('question'));
    }
 
    /**
@@ -63,13 +63,13 @@ class ArticleController extends Controller
            'mdContent' => 'required',
        ]);
 
-       $article = Article::findOrFail($id);
+       $question = Question::findOrFail($id);
 
-       $article->content = $request->input('mdContent');
+       $question->content = $request->input('mdContent');
 
-       $article->save();
+       $question->save();
 
-       return redirect('/admin/articles/' . $id);
+       return redirect('/admin/questions/' . $id);
    }
 
    /**
@@ -80,11 +80,11 @@ class ArticleController extends Controller
     */
    public function destroy($id)
    {
-       $article = Article::find($id);
+       $question = Question::find($id);
 
-       $article->delete();
+       $question->delete();
 
-       return redirect('/admin/articles');
+       return redirect('/admin/questions');
    }
 
 }

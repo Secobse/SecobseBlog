@@ -14,12 +14,12 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Dashboard<a href="{{ url('/articles/create') }}">
+                    Dashboard
                 </div>
 
                 <div class="panel-body">
                     <div class="text-align">
-                        <button class="btn btn-sm btn-success">Create A Blog</button></a>
+                        <a href="/questions/create"><button class="btn btn-sm btn-success">Create A Blog</button></a>
                     </div>
                     <hr />
                     <form class="form" action="/profile" method="POST" enctype="multipart/form-data">
@@ -36,26 +36,26 @@
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
-                <div class="panel-heading">My Article</div>
+                <div class="panel-heading">My Question</div>
                 <div class="panel-body">
                     <ul class="list-group">
-                        @foreach($userArticles as $userArticle)
+                        @foreach($userQuestions as $userQuestion)
                         <li class="list-group-item">
-                            <a href="{{ route('articles.destroy', $userArticle->id) }}"
+                            <a href=""
                                         onclick="event.preventDefault();
                                                  document.getElementById('delete-form').submit();" class="pull-right">
                                        <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
-                            <a href="/articles/{{ $userArticle->id }}/edit" class="pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            {{ $userArticle->title }}
+                            <a href="/questions/{{ $userQuestion->id }}/edit" class="pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            {{ $userQuestion->title }}
                         </li>
-                        <form id="delete-form" action="/articles/{{ $userArticle->id }}" method="POST" style="display: none;">
+                        <form id="delete-form" action="/questions/{{ $userQuestion->id }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                         </form>
                         @endforeach
                         <nav>
-                            {{$userArticles->render()}}
+                            {{$userQuestions->render()}}
                         </nav>
                     </ul>
                 </div>
