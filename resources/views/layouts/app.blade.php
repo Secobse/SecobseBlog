@@ -11,11 +11,11 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet">
 
-    <link rel="shortcut icon" href="/images/logo.png">
+    <link rel="shortcut icon" href="{{ URL::asset('/images/logo.png') }}">
 
-    <link href="/css/home.css" rel="stylesheet">
+    <link href="{{ URL::asset('/css/home.css') }}" rel="stylesheet">
 
     @yield('css')
 
@@ -260,7 +260,7 @@
     @yield('content')
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ URL::asset('/js/app.js') }}"></script>
     @yield('js')
 </body>
 </html>

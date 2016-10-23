@@ -11,9 +11,9 @@
     <title>SecobseBlog</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <link href="/css/welcome.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/images/logo.png">
+    <link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/css/welcome.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ URL::asset('/images/logo.png') }}">
     @yield('css')
 
     <!-- Scripts -->
@@ -347,8 +347,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
-    <script src="/js/slide.js"></script>
+    <script src="{{ URL::asset('/js/app.js') }}"></script>
+    <script src="{{ URL::asset('/js/slide.js') }}"></script>
 
 </body>
 </html>

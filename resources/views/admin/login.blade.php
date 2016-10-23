@@ -10,7 +10,7 @@
 	<title>Login Backend</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
 	<style>

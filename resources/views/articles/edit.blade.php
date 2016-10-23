@@ -3,7 +3,7 @@
 @section('title', '| Edit your article')
 
 @section('css')
-<link href="/css/simplemde.min.css" rel="stylesheet">
+<link href="{{ URL::asset('/css/simplemde.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -42,7 +42,7 @@
 @endsection
 
 @section('js')
-<script src="/js/simplemde.min.js"></script>
+<script src="{{ URL::asset('/js/simplemde.min.js') }}"></script>
 <script>
 var simplemde = new SimpleMDE({
 	element: $("#ID")[0],

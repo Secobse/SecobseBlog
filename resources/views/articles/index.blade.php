@@ -69,7 +69,7 @@
 @endsection
 
 @section('js')
-<script type="text/javascript" scr="/js/jquery-2.2.3.js"></script>
+<script type="text/javascript" scr="{{ URL::asset('/js/jquery-2.2.3.js') }}"></script>
 <script type="text/javascript">
 		$(function(){
 			$('div.alert').not('.alert-important').delay(3000).slideUp(500);

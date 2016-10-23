@@ -11,7 +11,7 @@
 	<title>@yield('title')</title>
 
 	<!-- Styles -->
-	<link href="/css/app.css" rel="stylesheet">
+	<link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 	@yield('css')
 
 	<!-- Scripts -->
@@ -65,7 +65,7 @@
 	@yield('content')
 
 	<!-- Scripts -->
-	<script src="/js/app.js"></script>
+	<script src="{{ URL::asset('js/app.js') }}"></script>
 	@yield('js')
 </body>
 </html>
