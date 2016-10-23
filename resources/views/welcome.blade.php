@@ -313,7 +313,7 @@
             <div class="row">
                 <h1>Can Explore SecobseBlog</h1>
                 <div class="col-md-8 col-md-offset-2">
-                    <a href="http://localhost:8000/articles" style="color: #333;"><i class="fa fa-hand-o-right fa-5x" aria-hidden="true">GO</i></a>
+                    <a href="/articles" style="color: #333;"><i class="fa fa-hand-o-right fa-5x" aria-hidden="true">GO</i></a>
                 </div>
             </div>
         </div>
