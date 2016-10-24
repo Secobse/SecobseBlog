@@ -1,6 +1,6 @@
-# SecobseBlog
+# SecobseQuestion
 
-This is our team's blog.
+A stackoverflow-like website
 
 #### we use
 
@@ -9,6 +9,7 @@ This is our team's blog.
 - mysql
 - bootstrap
 - font-awesome
+- select2.js
 - (maybe need php-gd, php-mbstring)
 
 #### team member:
@@ -52,16 +53,21 @@ next, generate your key:
 php artisan key:generate
 ```
 
+need to use composer to create laravel:
+
+```
+composer install
+```
+
 you will migrate the table with run:
 
 ```
 php artisan migrate
 ```
 
-the default repo not exist your composer vendor dir and the node_modules dir, so you will run:
+the default repo does not exist the node_modules dir, so you will run:
 
 ```
-composer install
 
 npm install
 ```
@@ -70,6 +76,8 @@ to complie your static file, run:(this command assume you have gulp in your path
 
 ```
 gulp
+// if you dont want to develop something, run:
+gulp --production
 ```
 
 if you don't have node or npm, please install it.
