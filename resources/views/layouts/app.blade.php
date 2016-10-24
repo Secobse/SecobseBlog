@@ -26,7 +26,7 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top navbar-fixed-top" style="margin-bottom: 0px; background-color: #fff; border-bottom-width: 2px; border-bottom-color: #0A466F;">
+    <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -39,32 +39,28 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}" style="color: black; font-weight: bold; font-size: 24px;">
+                <a class="navbar-brand secobse-logo" href="{{ url('/') }}">
                     Secobse
-
                 </a>
-                  <a class="navbar-brand" href="{{ url('/') }}">
-                    <img alt="Brand" src="/images/logo.png" style="position: relative; left: 95px; bottom: 13px; width: 55px; height: 50px; ">
-                  </a>
 
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('') }}" style="color: black; font-weight: bold; font-size: 16px;">Questions</a></li>
+                <ul class="nav navbar-nav nav-title">
+                    <li><a href="{{ url('') }}">Questions</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a data-toggle="modal" data-target="#login" style="color: black; font-weight: bold;">Login</a></li>
-                        <li><a data-toggle="modal" data-target="#register" style="color: black; font-weight: bold;">Register</a></li>
+                        <li><a data-toggle="modal" data-target="#login">Login</a></li>
+                        <li><a data-toggle="modal" data-target="#register">Register</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position: relative;  padding-left: 55px; color: black; font-weight: bold;">
-                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="{{ Auth::user()->avatar }}" style="width: 32px; height: 32px; position: absolute; top: 10px; left: 10px; border-radius: 50%;"/>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="{{ Auth::user()->avatar }}" />
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
