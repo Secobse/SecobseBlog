@@ -1,85 +1,131 @@
 @extends('layouts.app')
 
-@section('title', 'Tag|Questions')
+@section('title', 'Question')
 
 @section('content')
-	<div style="background: #fff;">
-		<a href="javascript:;" class="scrolltop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-		<div class="container">
-			<div class="jumbotron" style="margin-top: 70px;">
-				<div style="color: white;">
-					<h2>Questions
-						<small style="color: white;">Page {{ $questions->currentPage() }}
-							of {{ $questions->lastPage() }}</small>
-					</h2>
-					<p style="font-weight: bold;">Let's Begin!</p>
-				</div>
-				<p style="float: right;"><a class="btn btn-primary btn-lg" href="/questions/create" role="button"
-				                            style="background: #f46b2c; border: none;">Create One</a></p>
-			</div>
-			<div class="row">
-				@if(Session::has('status'))
-					<div class="alert alert-success">
-						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
-						{{ Session::get('status') }}
-					</div>
-				@endif
-
-				<div class="col-md-7">
-					<blockquote>Tag: <span class="label label-success">{{{ $tag->name }}}</span></blockquote>
-					@foreach($questions as $article)
-						<div class="list-group">
-							<a href="{{ url('questions', $article->id) }}" class="list-group-item artilce_transform">
-								<h4 class="list-group-item-heading" style="margin-bottom:-13px;">
-									Author: {{ $article->username }}
-									<span class="label label-info pull-right_create">created-time: {{ $article->created_at }}</span>
-								</h4>
-								<p class="list-group-item-text">
-								<h3 style="margin-bottom:16px;margin-top: 32px;">{{ $article->title }}
-									@foreach ($article->tags as $tag)
-										<span class="label label-success">
-										{{ $tag->name }}
-										</span>&nbsp;
-									@endforeach</h3>
-								<div class="list-group-content">
-									<span class="label label-primary"
-									      style="float:left;margin-top:7px;">readtimes: {{ $article->readtimes }}</span>
-								</div>
-								</p>
-							</a>
-						</div>
-					@endforeach
-					<nav>
-						{{$questions->render()}}
-					</nav>
-				</div>
-
-				<div class="col-md-5">
-					@if(Session::has('error'))
-						<div class="alert alert-success">{{ Session::get('error') }}</div>
-					@endif
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container">
+    <div class="row">
+        @if(Session::has('status'))
+        <div class="alert alert-success">
+            <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ Session::get('status') }}
+        </div>
+        @endif
+        <div class="col-md-9">
+			<blockquote>Tag: <span class="label label-success">{{{ $tag->name }}}</span></blockquote>
+            @foreach($questions as $question)
+            <div class="qus-list-st">
+                <div class="comms-rdts">
+                    <div class="comms">{{ $question->readtimes }}<br/><i class="fa fa-comments fa-2x" aria-hidden="true"></i></div>
+                    <div class="rdts">{{ $question->readtimes }}<br/><i class="fa fa-eye fa-2x" aria-hidden="true"></i></div>
+                </div>
+                <div class="author-crt">
+                    <a href="/profile/{{ $question->username }}">
+                        <span class="author">
+                            {{ $question->username }}
+                        </span>
+                    </a>
+                    <span class="crt">created-time: {{ $question->created_at }}</span>
+                </div>
+                <div class="qus-tit-tag">
+                    <a href="{{ url('questions', $question->id) }}">
+                        <span class="qus-tit">{{ $question->title }}</span>
+                    </a>
+                    @unless($question->tags->isEmpty())
+                    @foreach ($question->tags as $tag)
+                    <a href="{{url('tag/'.$tag->id.'')}}">
+                        <span class="qus-tag">{{ $tag->name }}&nbsp;</span>
+                    </a>
+                    @endforeach
+                    @endunless
+                </div>
+            </div>
+            @endforeach
+            <nav class="qus-paging">
+                {{$questions->render()}}
+            </nav>
+        </div>
+        <div class="col-md-3">
+            <div class="qus-create">
+                <p>What question do you have?</p>
+                <p><a class="btn btn-success btn-block" href="/questions/create" role="button">Create One</a></p>
+                <p>Let's Begin!</p>
+            </div>
+            <div class="list-group recomm">
+                <h4 class="recomm-tit">Recommend author</h4>
+                <ol>
+                    <li>
+                        <img src="/uploads/avatars/default.jpg" />
+                        <a href="#">loner11</a>
+                    </li>
+                    <li>
+                        <img src="/uploads/avatars/default.jpg" />
+                        <a href="#">loner11</a>
+                    </li>
+                    <li>
+                        <img src="/uploads/avatars/default.jpg" />
+                        <a href="#">loner11</a>
+                    </li>
+                    <li>
+                        <img src="/uploads/avatars/default.jpg" />
+                        <a href="#">loner11</a>
+                    </li>
+                    <li>
+                        <img src="/uploads/avatars/default.jpg" />
+                        <a href="#">loner11</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    @if(Session::has('error'))
+    <div class="alert alert-success">{{ Session::get('error') }}</div>
+    @endif
+    <footer>
+       <!-- footer content -->
+       <div class="footer">
+           <div class="container">
+               <div class="row">
+                   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                   　　<h3>Find us on github</h3>
+                      <ul>
+                           <li><a href="https://github.com/G1enY0ung">G1enY0ung</a></li>
+                           <li><a href="https://github.com/Gasbylei">Gasbylei</a></li>
+                           <li><a href="https://github.com/happylwp">happylwp</a></li>
+                           <li><a href="https://github.com/loner11">loner11</a></li>
+                           <li><a href="https://github.com/Th0rns">Th0rns</a></li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <!-- footer bottom -->
+       <div class="footer-bottom">
+           <div class="container">
+               <p class=""> Copyright &copy; Secobse. 2016  All right reserved. </p>
+           </div>
+       </div>
+   </footer>
+</div>
+<!-- scroll to top -->
+<a href="#" class="scrollToTop"><i class="fa fa-angle-up fa-2x" aria-hidden="true"></i></a>
 @endsection
 
 @section('js')
-	<script type="text/javascript" scr="/js/jquery-2.2.3.js"></script>
-	<script type="text/javascript">
-		$(function () {
-			$('div.alert').not('.alert-important').delay(3000).slideUp(500);
-			$(window).scroll(function () {
-				var t = $(this).scrollTop();
-				if (t > 200) {
-					$(".scrolltop").stop().fadeIn();
-				} else {
-					$(".scrolltop").stop().fadeOut();
-				}
-			})
-			$(".scrolltop").click(function () {
-				$("html,body").stop().animate({scrollTop: 0}, 300)
-			})
-		});
-	</script>
+<script type="text/javascript" scr="/js/jquery-2.2.3.js"></script>
+<script>
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('.scrollToTop').fadeIn();
+        } else {
+            $('.scrollToTop').fadeOut();
+        }
+    });
+    $('.scrollToTop').click(function(){
+        $('html, body').animate({scrollTop : 0},800);
+        return false;
+    });
+});
+</script>
 @endsection
