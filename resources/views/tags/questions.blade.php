@@ -14,7 +14,7 @@
 					</h2>
 					<p style="font-weight: bold;">Let's Begin!</p>
 				</div>
-				<p style="float: right;"><a class="btn btn-primary btn-lg" href="/questions/create" role="button"
+				<p style="float: right;"><a class="btn btn-primary btn-lg" href="/questions/edit" role="button"
 				                            style="background: #f46b2c; border: none;">Create One</a></p>
 			</div>
 			<div class="row">

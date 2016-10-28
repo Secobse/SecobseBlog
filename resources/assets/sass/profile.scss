@@ -1,0 +1,289 @@
+$edit_color:#999;
+$profile_edit_color:#8a6d3b;
+$profile_edit_background:#fcf8e3;
+$profile_background_color:white;
+$profile_base_color:#999;
+$profile_base_green:#5fb960;
+$profile_tags_background:#d8f0d8;
+$profile_tags_color:#6c9e56;
+
+
+$profile_margin_top:1em;
+$profile_margin_bottom:1em;
+$clear_height:22px;
+
+$profile_bottom_line:1px solid #eee;
+
+@mixin profile_position($property, $value1, $value2) {
+    position: $property;
+    top:  $value1;
+    left: $value2;
+}
+
+@mixin border-radius($value) {
+    -webkit-border-radius: $value;
+    -moz-border-radius: $value;
+    -ms-border-radius: $value;
+    -o-border-radius: $value;
+    border-radius: $value;
+}
+
+@mixin transition ($value){
+  -webkit-transition:$value;
+  -moz-transition:$value;
+  -ms-transition:$value;
+  -o-transition:$value;
+  transition:$value;
+}
+
+@mixin transform($value) {
+  -webkit-transform:scale($value);
+  -moz-transform:scale($value);
+  -ms-transform:scale($value);
+  -o-transform:scale($value);
+  transform:scale($value);
+}
+
+body{
+  background: $profile_background_color;
+}
+.addInfor{
+  cursor: pointer;
+}
+.clear_style{
+    margin-top: -22px;
+    background: #f6f6f6;
+    .row{
+      @include profile_position(relative,0,0) ;
+    }
+}
+.profile_info{
+  .profile_img{
+    display: block;
+    height: 10em;
+    @include profile_position(absolute,0,0) ;
+    @include border-radius(50%);
+    margin-right: 25px;
+    margin-top: $profile_margin_top;
+    line-height: 10em;
+    border: 0px;
+    box-size:border-box;
+  }
+
+  .profile_intro{
+    margin-top: $profile_margin_top;
+    border: none;
+    .profile_intro_header{
+      background-color: #E3E3E3;
+      border:none;
+      margin-bottom: 0px;
+      line-height: 1em;
+      &:after{
+        display: block;
+        content: '';
+        clear: both;
+      }
+      .circle_apple{
+        float: left;
+        .circle{
+          width: 1em;
+          height: 1em;
+          margin-right: 0.4em;
+          @include border-radius(50%);
+          float: left;
+        }
+        .circle_red{
+          background-color: #FF5F57;
+        }
+        .circle_orange{
+          background-color: #FFBD2E;
+        }
+        .circle_green{
+          background-color: #28CA42;
+        }
+      }
+      .profile_edit{
+        float: right;
+        cursor: pointer;
+        a{
+          color: #636b6f;
+          &:hover{
+            text-decoration:none;
+            background:$profile_edit_background;
+            color: $profile_edit_color;
+            padding: 0.2em;
+          }
+          i{
+            margin-left:0.2em 0.2em;
+          }
+
+        }
+      }
+    }
+    .profile_intro_content{
+      background-color: #EEEEEE;
+      .intro_detail_hide{
+        display: none;
+      }
+      li{
+        list-style: none;
+        background-color: #eee;
+        width: 100%;
+        font-size: 13px;
+        color: #666;
+        overflow: auto;
+        height: 170px;
+        padding: 20px;
+        a{
+          color: #009a61;
+        }
+        &:after{
+          display: block;
+          content: '';
+          clear: both;
+        }
+        button{
+          margin-top: $profile_margin_top;
+          margin-left: 0.4em;
+          float: right;
+        }
+      }
+    }
+  }
+
+}
+.edit_Color{
+  color:$edit_color;
+}
+
+// profile content left
+.proflie_left_aside{
+  margin-top: $profile_margin_top;
+  .proflie_focus_ren{
+    height: 40px;
+    border-right: $profile_bottom_line;
+    span{
+      line-height: 20px;
+      color: $profile_base_color;
+      font-size: 14px;
+    }
+    .profile_focus{
+        color:#333 ;
+        font-size: 16px;
+    }
+  }
+  // left aside
+  .profile_listmenu{
+    margin-top: 4em;
+    ul{
+      .profile_divider_line{
+        margin-bottom:$profile_margin_bottom;
+        background-color: #eee;
+        height: 0px;
+        border-bottom: $profile_bottom_line;
+        a{
+          &:hover{
+            background-color: $profile_background_color;
+          }
+        }
+      }
+      .profile_active{
+        background:#f6f6f6;
+        a{
+            color: $profile_base_green;
+            background: #f0f5f3;
+        }
+      }
+      li{
+        a{
+          color: #666;
+          &:hover{
+            color:$profile_base_green;
+            background: #f0f5f3;
+          }
+          &:after{
+            content: '';
+            display: block;
+            clear: both;
+          }
+          .leftarea{
+            float: left;
+          }
+          .rightarea{
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+// content middle
+.highmarks{
+  margin-top: $profile_margin_top;
+  border: 1px solid #eee;
+  .high_head{
+    background-color: #f5f5f5;
+    color:#333;
+  }
+  .question_list{
+    color: #CCCCCC;
+    &:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .leftarea{
+      float: left;
+      margin-left: 0.5em;
+    }
+
+    .profile_tags{
+      display: block;
+      width:3em;
+      height: 1.5em;
+      text-align: center;
+      color: $profile_tags_color;
+      background: $profile_tags_background;
+    }
+
+    .question_detail{
+      color:rgb(36,38,36);
+      &:hover{
+        color:$profile_tags_color;
+        background-color: $profile_background_color;
+        text-decoration: none;
+        @include transform(1.1);
+        @include transition(0.3);
+      }
+    }
+  }
+}
+
+// content right aside
+.profile_skill{
+  margin-top: $profile_margin_top;
+  .profile_skill_list{
+    margin-top: $profile_margin_top;
+    &:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .leftarea{
+      float: left;
+    }
+    .profile_tags{
+      color:$profile_tags_color;
+      background-color: $profile_tags_background;
+      width: auto;
+      padding: 0.1em 0.4em;
+      height: 1.5em;
+      line-height: 1.5em;
+      text-align: center;
+    }
+  }
+}
+.profile_createat{
+  margin-top: $profile_margin_top;
+}
