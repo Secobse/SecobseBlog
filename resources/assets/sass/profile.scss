@@ -68,7 +68,7 @@ body {
     }
 }
 .profileInfo {
-  .profileInformation{
+  .profileInformation {
     margin-top: $profile_margin_top;
     @include largeMedia-width{
     @include positionBL(absolute,0em,14em);
@@ -76,7 +76,7 @@ body {
     @include commonMedia {
       @include positionBL(absolute,0em,14em);
     }
-    @include lessMedia{
+    @include lessMedia {
         float: left;
         left: 0px;
         top: 11em;
@@ -102,7 +102,7 @@ body {
     line-height: 10em;
     border: 0px;
     box-size:border-box;
-    @include lessMedia{
+    @include lessMedia {
       margin-bottom: 13em;
     }
   }

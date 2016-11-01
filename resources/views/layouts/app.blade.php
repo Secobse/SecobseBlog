@@ -12,7 +12,6 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-  
 
     <link rel="shortcut icon" href="/images/logo.png">
 
