@@ -24,7 +24,10 @@
                     <hr />
                     <form class="form" action="/profile" method="POST" enctype="multipart/form-data">
                         <label for="update">Update Profile Image</label>
-                        <input type="file" name="avatar">
+                        @foreach($user as $u)
+                        <img src="/uploads/avatars/{{ $u->avatar }}" alt="{{ $u->avatar }}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px;" />
+                        @endforeach
+                            <input type="file" name="avatar">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="submit" value="Submit" class="btn btn-sm btn-primary" style="position: relative; bottom: 25px; left: 200px;">
                     </form>

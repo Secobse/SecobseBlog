@@ -114,6 +114,19 @@ return [
 
     'use_underscore' => true,
 
+	/*
+    |--------------------------------------------------------------------------
+    | Enable Underscore Parsing
+    |--------------------------------------------------------------------------
+    |
+    | This option specifies how to handle untrusted HTML input.
+    |
+    | Default: true
+    |
+    */
+
+	'html_input' =>'strip',
+
     /*
     |--------------------------------------------------------------------------
     | Safe Mode

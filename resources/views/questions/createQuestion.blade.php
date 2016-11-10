@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '| Create your new question')
+@section('title', '| Ask your new question')
 
 @section('css')
 	<link href="/css/simplemde.min.css" rel="stylesheet">

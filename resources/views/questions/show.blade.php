@@ -1,85 +1,111 @@
 @extends('layouts.app')
 
 @section('title')
-{{ $question->title }}
+	{{ $question->title }}
 @endsection
 @section('content')
-<div style="background-color:#fff;">
-<a href="javascript:;" class="scrolltop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
-<div class="container">
-	<div class="row">
-		@if(Session::has('status'))
-			<div class="alert alert-success">
-					<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
-					{{ Session::get('status') }}
-			</div>
-		@endif
-		<div class="col-md-8 col-md-offset-2 article_show_item">
-			<h1 style="text-align:center;">{{ $question->title }}</h1>
-			<hr style="border-width:2px;border-top-color:rgba(125, 116, 122, 0.98)">
-			<i class="glyphicon glyphicon-calendar"></i><em style="font-size:14px;margin-right:60%;">Date:({{ $question->published_at }})</em>
-
-			<i class="glyphicon glyphicon-user"></i><em style="font-size:14px;">Author: <a href="/profile/{{ $question->username }}">{{ $question->username }}</a></em>
-			@unless($question->tags->isEmpty())
-				<em>Tags:<i class="glyphicon glyphicon-tags"></i>
-					@foreach($question->tags as $tag)
-						<a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
-					@endforeach
-				</em>
-			@endunless
-				<article style="margin-top:20px">
-					<div class="body">
-						@MarkDown($question->content)
-						<hr class="article-show_footline">
+	<div style="background-color:#fff;">
+		<a href="javascript:;" class="scrolltop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+		<div class="container">
+			<div class="row">
+				@if(Session::has('status'))
+					<div class="alert alert-success">
+						<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+						{{ Session::get('status') }}
 					</div>
-				</article>
+				@endif
+				<div class="col-md-8 col-md-offset-2 article_show_item">
+					<h1 style="text-align:center;">{{ $question->title }}</h1>
+					<hr style="border-width:2px;border-top-color:rgba(125, 116, 122, 0.98)">
+					<i class="glyphicon glyphicon-calendar"></i><em
+							style="font-size:14px;margin-right:60%;">Date:({{ $question->published_at }})</em>
+
+					<i class="glyphicon glyphicon-user"></i><em style="font-size:14px;">Author: <a
+								href="/profile/{{ $question->username }}">{{ $question->username }}</a></em>
+					@unless($question->tags->isEmpty())
+						<em>Tags:<i class="glyphicon glyphicon-tags"></i>
+							@foreach($question->tags as $tag)
+								<a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
+							@endforeach
+						</em>
+					@endunless
+					<article style="margin-top:20px">
+						<div class="body">
+							@MarkDown($question->content)
+							<hr class="article-show_footline">
+						</div>
+					</article>
+				</div>
+			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div>
+			<span>{{$count}}:Answer</span>
+			<hr>
+		</div>
+		@include('questions.comment')
 
-	<button class="btn btn-default" onclick="history.go(-1)">
-		« Back
-	</button>
+	</div>
+	@if (Auth::guest())
+		<div class="container">
+			<h3 align="center">登录后可以提交回答
+				<button type="button" id="tologin" class="btn btn-primary">login</button>
+			</h3>
+		</div>
+	@else
+		<div class="container">
+			<div><h3>撰写回答:</h3></div>
+			<form id="answer" action="/answer" method="POST" class="form-horizontal">
+				<input type="hidden" name="question_id" id="question_id" value="{{ $question->id }}">
+				<textarea name="answer_content" id="answerEditor"></textarea>
+				{!! csrf_field() !!}
+				<button type="submit" id="tsave" class="btn btn-primary">Submit Answer</button>
+			</form>
 
-	<div id="disqus_thread"></div>
-	<script>
 
-	/**
-	 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-	 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-	/*
-	var disqus_config = function () {
-	    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-	    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-	};
-	*/
-	(function() { // DON'T EDIT BELOW THIS LINE
-	    var d = document, s = d.createElement('script');
-	    s.src = '//secobse.disqus.com/embed.js';
-	    s.setAttribute('data-timestamp', +new Date());
-	    (d.head || d.body).appendChild(s);
-	})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-	<script id="dsq-count-scr" src="//secobse.disqus.com/count.js" async></script>
-</div>
-</div>
+			@if ($errors->has('mdContent'))
+				<span class="help-block">
+				<strong>{{ $errors->first('mdContent') }}</strong>
+			</span>
+			@endif
+		</div>
+	@endif
 @endsection
 
 @section('js')
-<script type="text/javascript">
-		$(function(){
+	<link href="/css/simplemde.min.css" rel="stylesheet">
+	<script src="/js/simplemde.min.js"></script>
+	<script>
+		$('#tologin').click(function () {
+			$('#login').modal('show');
+		});
+	</script>
+	<script type="text/javascript">
+		$(function () {
 			$('div.alert').not('.alert-important').delay(3000).slideUp(500);
-			$(window).scroll(function(){
-				var t=$(this).scrollTop();
-				if(t>200){
+			$(window).scroll(function () {
+				var t = $(this).scrollTop();
+				if (t > 200) {
 					$(".scrolltop").stop().fadeIn();
-				}else{
+				} else {
 					$(".scrolltop").stop().fadeOut();
 				}
-			})
-			$(".scrolltop").click(function(){
-				$("html,body").stop().animate({scrollTop:0},300)
+			});
+			$(".scrolltop").click(function () {
+				$("html,body").stop().animate({scrollTop: 0}, 300)
 			})
 		});
-</script>
+	</script>
+	<script>
+		var simplemde = new SimpleMDE({
+			element: $("#answerEditor")[0],
+			codeSyntaxHighlighting: true
+		});
+		var comment = new SimpleMDE({
+			element: $("#comment")[0],
+			toolbar: false,
+			toolbarTips: false
+		});
+	</script>
 @endsection

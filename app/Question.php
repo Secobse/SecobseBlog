@@ -60,4 +60,11 @@ class Question extends Model
 	{
 		return $this->belongsToMany('App\Tag');
 	}
+	/**
+	 * Get the answers for the question.
+	 */
+	public function answers()
+	{
+		return $this->hasMany('App\Answer');
+	}
 }

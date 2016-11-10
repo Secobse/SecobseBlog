@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 use App\Question;
 
@@ -26,7 +29,10 @@ class HomeController extends Controller
     public function index()
     {
     	$userQuestions = Question::userQuestions()->orderBy('published_at', 'desc')->Paginate(5);
+		$user = DB::table('users')
+			->where('name',  Auth::user()->name)
+			->get();
 		$tags = Question::UserTags()->distinct()->get();
-        return view('home', compact('userQuestions','tags'));
+        return view('home', compact('userQuestions','tags','user'));
     }
 }

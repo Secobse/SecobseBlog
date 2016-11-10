@@ -15,7 +15,7 @@
             @foreach($questions as $question)
             <div class="qus-list-st">
                 <div class="comms-rdts">
-                    <div class="comms">{{ $question->readtimes }}<br/><i class="fa fa-comments fa-2x" aria-hidden="true"></i></div>
+                    <div class="comms">{{ $question->answertimes }}<br/><i class="fa fa-comments fa-2x" aria-hidden="true"></i></div>
                     <div class="rdts">{{ $question->readtimes }}<br/><i class="fa fa-eye fa-2x" aria-hidden="true"></i></div>
                 </div>
                 <div class="author-crt">
@@ -47,7 +47,7 @@
         <div class="col-md-3">
             <div class="qus-create">
                 <p>What question do you have?</p>
-                <p><a class="btn btn-success btn-block" href="/questions/create" role="button">Create One</a></p>
+                <p><a class="btn btn-success btn-block" href="/questions/create" role="button">Ask Questions</a></p>
                 <p>Let's Begin!</p>
             </div>
             <div class="list-group recomm">
