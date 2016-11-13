@@ -1,0 +1,343 @@
+$edit_color:#999;
+$profile_edit_color:#8a6d3b;
+$profile_edit_background:#fcf8e3;
+$profile_tags_background:#d8f0d8;
+$profile_tags_color:#6c9e56;
+
+
+$profile_margin_top:1em;
+$profile_margin_bottom:1em;
+$clear_height:22px;
+
+$profile_bottom_line:1px solid #eee;
+
+@mixin positionBL($property, $value1, $value2) {
+    position: $property;
+    top: $value1;
+    left: $value2;
+}
+
+@mixin transition ($value) {
+  -webkit-transition:$value;
+  transition:$value;
+}
+
+@mixin transform($value)  {
+  -webkit-transform:scale($value);
+  -moz-transform:scale($value);
+  -o-transform:scale($value);
+  transform:scale($value);
+}
+
+$largeMedia-width:991px;
+$commonMedia-width:768px;
+$lessMedia-width:512px;
+
+@mixin largeMedia-width {
+  @media screen and (max-width: #{$largeMedia-width})
+  {
+    @content;
+  }
+}
+@mixin commonMedia {
+    @media screen and (max-width: #{$commonMedia-width}) {
+        @content;
+    }
+}
+
+@mixin lessMedia {
+  @media screen and (max-width: #{$lessMedia-width}){
+    @content;
+  }
+}
+@mixin minMedia {
+  @media screen and (max-width: #{minMedia}){
+    @content;
+  }
+}
+
+body {
+  background: white;
+}
+
+.clearStyle {
+    margin-top: -22px;
+    background: #f6f6f6;
+    .row{
+      position: relative;
+    }
+}
+.profileInfo {
+  .profileInformation {
+    margin-top: $profile_margin_top;
+    @include largeMedia-width{
+    @include positionBL(absolute,0em,14em);
+    }
+    @include commonMedia {
+      @include positionBL(absolute,0em,14em);
+    }
+    @include lessMedia {
+        float: left;
+        left: 0px;
+        top: 11em;
+    }
+    .addInfor {
+      cursor: pointer;
+      display: none;
+      input {
+        display: inline;
+        width: auto;
+        margin-right: 0.4em;
+      }
+    }
+  }
+
+  .profileImg {
+    display: block;
+    height: 10em;
+    border-radius:50%;
+    margin-right: 25px;
+    margin-top: 3em;
+    margin-bottom: 4em;
+    line-height: 10em;
+    border: 0px;
+    box-size:border-box;
+    @include lessMedia {
+      margin-bottom: 13em;
+    }
+  }
+  .profileIntro {
+    margin-top: $profile_margin_top;
+    border: none;
+
+    .profileIntroHeader {
+      background-color: #E3E3E3;
+      border:none;
+      margin-bottom: 0px;
+      line-height: 1em;
+      &:after {
+        display: block;
+        content: '';
+        clear: both;
+      }
+      .circleApple {
+        float: left;
+        .circle {
+          width: 1em;
+          height: 1em;
+          margin-right: 0.4em;
+          border-radius: 50%;
+          float: left;
+        }
+        .circleRed {
+          background-color: #FF5F57;
+        }
+        .circleOrange {
+          background-color: #FFBD2E;
+        }
+        .circleGreen {
+          background-color: #28CA42;
+        }
+      }
+      .profileEdit {
+        float: right;
+        cursor: pointer;
+        a {
+          color: #636b6f;
+          &:hover {
+            text-decoration:none;
+            background:$profile_edit_background;
+            color: $profile_edit_color;
+            padding: 0.2em;
+          }
+          i {
+            margin-left:0.2em 0.2em;
+          }
+
+        }
+      }
+    }
+    .profileIntroContent {
+      background-color: #EEEEEE;
+      .introDetailHide {
+        display: none;
+      }
+      li {
+        list-style: none;
+        background-color: #eee;
+        width: 100%;
+        font-size: 13px;
+        color: #666;
+        overflow: auto;
+        height: 170px;
+        padding: 20px;
+        a {
+          color: #009a61;
+        }
+        &:after {
+          display: block;
+          content: '';
+          clear: both;
+        }
+        button {
+          margin-top: $profile_margin_top;
+          margin-left: 0.4em;
+          float: right;
+        }
+      }
+    }
+  }
+
+}
+.editColor {
+  color:$edit_color;
+}
+
+// profile content left
+.proflieLeftAside {
+  margin-top: $profile_margin_top;
+    .profileFocusRen {
+      height: 40px;
+      border-right: $profile_bottom_line;
+      span {
+        display: block;
+        line-height: 20px;
+        color: #999;
+        font-size: 14px;
+      }
+      .profileFocus {
+          color:#333 ;
+          font-size: 16px;
+      }
+    }
+    .profileFans {
+      height:40px;
+      span {
+        display:block;
+        line-height: 20px;
+        color: #999;
+        font-size: 14px;
+      }
+      .profileFocus {
+        color: #333;
+        font-size: 16px;
+      }
+    }
+  // left aside
+  .profileListmenu {
+    margin-top: 4em;
+    ul {
+      .profileDividerLine {
+        margin-bottom:$profile_margin_bottom;
+        background-color: #eee;
+        height: 0px;
+        border-bottom: $profile_bottom_line;
+        a {
+          &:hover {
+            padding: 0px;
+            cursor: auto;
+          }
+        }
+      }
+      .profileActive {
+        background:#f6f6f6;
+        a {
+            color: #5fb960;
+            background: #f0f5f3;
+        }
+      }
+      li {
+        a {
+          color: #666;
+          &:hover {
+            color:#5fb960;
+;
+            background: #f0f5f3;
+          }
+          &:after {
+            content: '';
+            display: block;
+            clear: both;
+          }
+          .leftarea {
+            float: left;
+          }
+          .rightarea {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+// content middle
+.highMarks {
+  margin-top: $profile_margin_top;
+  border: 1px solid #eee;
+  .highHead {
+    background-color: #f5f5f5;
+    color:#333;
+  }
+  .questionList {
+    color: #CCCCCC;
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .leftarea {
+      float: left;
+      margin-left: 0.5em;
+    }
+
+    .profileTags {
+      display: block;
+      width:3em;
+      height: 1.5em;
+      text-align: center;
+      color: $profile_tags_color;
+      background: $profile_tags_background;
+    }
+
+    .questionDetail {
+      color:rgb(36,38,36);
+      &:hover {
+        color:$profile_tags_color;
+        background-color: white;
+        text-decoration: none;
+        @include transform(1.1);
+        @include transition(0.3);
+      }
+    }
+  }
+}
+
+// content right aside
+.profileSkill {
+  margin-top: $profile_margin_top;
+  .profileSkillList {
+    margin-top: $profile_margin_top;
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .leftarea {
+      float: left;
+    }
+    .profileTags {
+      color:$profile_tags_color;
+      background-color: $profile_tags_background;
+      width: auto;
+      padding: 0.1em 0.4em;
+      height: 1.5em;
+      line-height: 1.5em;
+      text-align: center;
+    }
+  }
+}
+
+.profileCreateat {
+  margin-top: $profile_margin_top;
+}

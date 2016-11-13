@@ -9,7 +9,7 @@
 				<form id="task">
 					<div class="form-group">
 						<label for="tname" class="control-label">Name:</label>
-						<input id="tname" class="form-control" type="text"placeholder="Tagname">
+						<input id="tname" class="form-control" type="text" placeholder="Tagname">
 					</div>
 					{!! csrf_field() !!}
 				</form>
