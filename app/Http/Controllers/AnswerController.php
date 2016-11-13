@@ -13,7 +13,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class AnswerController extends Controller
 {
 	/**
-	 * Instantiate Questioncontroller instance.
+	 * Instantiate AnswerController instance.
 	 *
 	 * @return void
 	 */
@@ -22,17 +22,20 @@ class AnswerController extends Controller
 		$this->middleware('auth');
 	}
 
-	public function index() {
-		$answers = Answer::all();
-		return view('questions.show', compact('answers'));
-	}
-
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request $request
+	 * @return \Illuminate\Http\Response
+	 */
 	public function store(Request $request) {
 		$this->validate($request, [
 			'answer_content' => 'required'
 		]);
+
 		$question_id = $request->get('question_id');
 		$content = $request->input('answer_content');
+
 		$answer = Answer::create([
 			'answer_content' => $content ,
 			'html_content' => Markdown::convertToHtml($content),
@@ -43,6 +46,7 @@ class AnswerController extends Controller
 		]);
 
 		session()->flash('status', 'Answer has been published successfully!');
+
 		return redirect('/questions/'.$question_id);
 	}
 }

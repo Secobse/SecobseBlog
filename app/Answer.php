@@ -38,7 +38,10 @@ class Answer extends Model
 
 		return Carbon::parse($date)->diffForHumans();
 	}
-
+	/**
+	 * Answers has many comment
+	 * @return \Illuminate\Database\Eloquent\Relations\morphMany
+	 */
 	public function comments()
 	{
 		return $this->morphMany('App\Comment', 'commentable');

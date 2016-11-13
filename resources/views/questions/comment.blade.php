@@ -1,8 +1,6 @@
 <script>
 	function reply() {
 		var username = document.getElementById('username').getAttribute('data');
-//				var textArea = document.getElementById('comment');
-		//textArea.innerHTML = '@'+username+' ';
 		$('#comment').attr('value', '@'+username+'');
 	}
 </script>

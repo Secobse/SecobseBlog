@@ -25,8 +25,8 @@ Route::resource('', 'MainPageController', ['only' => [
 
 Route::resource('questions', 'QuestionController');
 Route::resource('/tag','TagController');
-Route::resource('/answer','AnswerController', ['only' => ['store', 'index']]);
-Route::resource('/comment','CommentController');
+Route::resource('/answer','AnswerController', ['only' => ['store']]);
+Route::resource('/comment','CommentController',['only' => ['store']]);
 
 Route::get('profile/{username}', 'User\UserController@profile');
 Route::post('profile', 'User\UserController@updateAvatar')->middleware('auth');
