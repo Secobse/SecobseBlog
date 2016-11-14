@@ -7,80 +7,102 @@
 @endsection
 
 @section('content')
+
 <div class="container">
-    <div class="row">
-        @if(Session::has('status'))
-        <div class="alert alert-success">
-            <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{ Session::get('status') }}
-        </div>
-        @endif
-        <div class="col-md-9">
-            @foreach($questions as $question)
-            <div class="singleQuestion">
-                <div class="count">
-                    <div><p>0</p><p>votes</p></div>
-                    <div><p>{{ $question->answertimes }}</p><p>answers</p></div>
-                    <div><p>{{ $question->readtimes }}</p><p>views</p></div>
-                </div>
-                <div class="details">
-                  <div>
-                      <a href="{{ url('questions', $question->id) }}">
-                          <span>{{ $question->title }}</span>
-                      </a>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#recent" role="tab" data-toggle="tab">Recent</a></li>
+    <li role="presentation"><a href="#noanswer" role="tab" data-toggle="tab">No answer</a></li>
+    <li role="presentation"><a href="#mostviewed" role="tab" data-toggle="tab">Most viewed</a></li>
+  </ul>
+
+  <div class="tab-content question-content">
+    <div role="tabpanel" class="tab-pane active" id="recent">
+      <div class="row">
+          @if(Session::has('status'))
+          <div class="alert alert-success">
+              <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+              {{ Session::get('status') }}
+          </div>
+          @endif
+          <div class="col-md-9">
+              @foreach($questions as $question)
+              <div class="singleQuestion">
+                  <div class="count-wide">
+                      <div><p>0</p><p>votes</p></div>
+                      <div><p>{{ $question->answertimes }}</p><p>answers</p></div>
+                      <div><p>{{ $question->readtimes }}</p><p>views</p></div>
                   </div>
-                  <div class="tag-and-create-info">
-                      @unless($question->tags->isEmpty())
-                      @foreach ($question->tags as $tag)
-                      <a href="{{url('tag/'.$tag->id.'')}}" class="label label-success tag">
-                          {{ $tag->name }}
-                      </a>
-                      @endforeach
-                      @endunless
-                      <div class="create-info">
-                        <a href="/profile/{{ $question->username }}">
-                            <span>{{ $question->username }}</span>
+                  <div class="details">
+                    <div>
+                        <a href="{{ url('questions', $question->id) }}">
+                            <span>{{ $question->title }}</span>
                         </a>
-                        <span>created-time: {{ $question->created_at }}</span>
-                      </div>
+                    </div>
+                    <div class="tag-and-create-info">
+                        @unless($question->tags->isEmpty())
+                        @foreach ($question->tags as $tag)
+                        <a href="{{url('tag/'.$tag->id.'')}}" class="tag">
+                            <label class="label label-success">{{ $tag->name }}</label>
+                        </a>
+                        @endforeach
+                        @endunless
+                        <div class="create-info">
+                          <a href="/profile/{{ $question->username }}">
+                              <span>{{ $question->username }}</span>
+                          </a>
+                          <span>created-time: {{ $question->created_at }}</span>
+                        </div>
+                    </div>
                   </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="col-md-3">
-            <div class="qus-create">
-                <p>All Questions About Development</p>
-                <p><a class="btn btn-success btn-block" href="/questions/create" role="button">Ask Questions</a></p>
-                <p>Begin!</p>
-            </div>
-            <div class="list-group recomm">
-                <h4 class="recomm-tit">Recommend author</h4>
-                <ol>
-                    <li>
-                        <img src="/uploads/avatars/default.jpg" />
-                        <a href="#">loner11</a>
-                    </li>
-                    <li>
-                        <img src="/uploads/avatars/default.jpg" />
-                        <a href="#">loner11</a>
-                    </li>
-                    <li>
-                        <img src="/uploads/avatars/default.jpg" />
-                        <a href="#">loner11</a>
-                    </li>
-                    <li>
-                        <img src="/uploads/avatars/default.jpg" />
-                        <a href="#">loner11</a>
-                    </li>
-                    <li>
-                        <img src="/uploads/avatars/default.jpg" />
-                        <a href="#">loner11</a>
-                    </li>
-                </ol>
-            </div>
-        </div>
+                  <div class="count-narrow">
+                      <div><label for="vote" class="label label-default">votes: 0</label></div>
+                      <div><label for="answer" class="label label-default">answers: {{ $question->answertimes }}</label></div>
+                      <div><label for="view" class="label label-default">views: {{ $question->readtimes }}</label></div>
+                  </div>
+              </div>
+              @endforeach
+          </div>
+          <div class="col-md-3">
+              <div class="qus-create">
+                  <p>All Questions About Development</p>
+                  <p><a class="btn btn-success btn-block" href="/questions/create" role="button">Ask Questions</a></p>
+                  <p>Begin!</p>
+              </div>
+              <div class="list-group recomm">
+                  <h4 class="recomm-tit">Recommend author</h4>
+                  <ol>
+                      <li>
+                          <img src="/uploads/avatars/default.jpg" />
+                          <a href="#">loner11</a>
+                      </li>
+                      <li>
+                          <img src="/uploads/avatars/default.jpg" />
+                          <a href="#">loner11</a>
+                      </li>
+                      <li>
+                          <img src="/uploads/avatars/default.jpg" />
+                          <a href="#">loner11</a>
+                      </li>
+                      <li>
+                          <img src="/uploads/avatars/default.jpg" />
+                          <a href="#">loner11</a>
+                      </li>
+                      <li>
+                          <img src="/uploads/avatars/default.jpg" />
+                          <a href="#">loner11</a>
+                      </li>
+                  </ol>
+              </div>
+          </div>
+      </div>
     </div>
+    <div role="tabpanel" class="tab-pane" id="noanswer">...</div>
+    <div role="tabpanel" class="tab-pane" id="mostviewed">...</div>
+  </div>
+</div>
+
+
+<div class="container">
     @if(Session::has('error'))
     <div class="alert alert-success">{{ Session::get('error') }}</div>
     @endif
