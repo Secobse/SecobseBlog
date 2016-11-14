@@ -17,42 +17,42 @@
         @endif
         <div class="col-md-9">
             @foreach($questions as $question)
-            <div class="qus-list-st">
-                <div class="comms-rdts">
-                    <div class="comms">{{ $question->answertimes }}<br/><i class="fa fa-comments fa-2x" aria-hidden="true"></i></div>
-                    <div class="rdts">{{ $question->readtimes }}<br/><i class="fa fa-eye fa-2x" aria-hidden="true"></i></div>
+            <div class="singleQuestion">
+                <div class="count">
+                    <div><p>0</p><p>votes</p></div>
+                    <div><p>{{ $question->answertimes }}</p><p>answers</p></div>
+                    <div><p>{{ $question->readtimes }}</p><p>views</p></div>
                 </div>
-                <div class="author-crt">
-                    <a href="/profile/{{ $question->username }}">
-                        <span class="author">
-                            {{ $question->username }}
-                        </span>
-                    </a>
-                    <span class="crt">created-time: {{ $question->created_at }}</span>
-                </div>
-                <div class="qus-tit-tag">
-                    <a href="{{ url('questions', $question->id) }}">
-                        <span class="qus-tit">{{ $question->title }}</span>
-                    </a>
-                    @unless($question->tags->isEmpty())
-                    @foreach ($question->tags as $tag)
-                    <a href="{{url('tag/'.$tag->id.'')}}">
-                        <span class="qus-tag">{{ $tag->name }}&nbsp;</span>
-                    </a>
-                    @endforeach
-                    @endunless
+                <div class="details">
+                  <div>
+                      <a href="{{ url('questions', $question->id) }}">
+                          <span>{{ $question->title }}</span>
+                      </a>
+                  </div>
+                  <div class="tag-and-create-info">
+                      @unless($question->tags->isEmpty())
+                      @foreach ($question->tags as $tag)
+                      <a href="{{url('tag/'.$tag->id.'')}}" class="label label-success tag">
+                          {{ $tag->name }}
+                      </a>
+                      @endforeach
+                      @endunless
+                      <div class="create-info">
+                        <a href="/profile/{{ $question->username }}">
+                            <span>{{ $question->username }}</span>
+                        </a>
+                        <span>created-time: {{ $question->created_at }}</span>
+                      </div>
+                  </div>
                 </div>
             </div>
             @endforeach
-            <nav class="qus-paging">
-                {{$questions->render()}}
-            </nav>
         </div>
         <div class="col-md-3">
             <div class="qus-create">
-                <p>What question do you have?</p>
+                <p>All Questions About Development</p>
                 <p><a class="btn btn-success btn-block" href="/questions/create" role="button">Ask Questions</a></p>
-                <p>Let's Begin!</p>
+                <p>Begin!</p>
             </div>
             <div class="list-group recomm">
                 <h4 class="recomm-tit">Recommend author</h4>

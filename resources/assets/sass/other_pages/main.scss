@@ -13,18 +13,6 @@ body {
     border-radius: $value;
 }
 
-@mixin positionTL($property, $value1, $value2) {
-    position: $property;
-    top:  $value1;
-    left: $value2;
-}
-
-@mixin positionBL($property, $value1, $value2) {
-    position: $property;
-    bottom: $value1;
-    left: $value2;
-}
-
 
 $ordinaryMedia-width: 768px;
 $smallMedia-width: 550px;
@@ -48,134 +36,6 @@ $x-smallMedia-width: 365px;
     }
 }
 
-//questions content list style
-.qus-list-st {
-    position: relative;
-    padding-bottom: 1em;
-    border: {
-        bottom: 0.0625em solid #ded4d4;
-    }
-    margin: 0;
-    line-height: 1;
-    .comms-rdts {
-         overflow: hidden;
-         z-index: -1;
-         @include positionTL(relative, 1.25em, 0);
-         @include ordinaryMedia {
-             @include positionTL(relative, 1em, 0);
-         }
-        .comms {
-            padding: 0.25em 0;
-            float: left;
-            @include border-radius(4px);
-            width: 2.5em;
-            height: 3.25em;
-            font-weight: bold;
-            text-align: center;
-            background-color: #009a61;
-            color: white;
-            @include ordinaryMedia {
-                width: 33px;
-                height: 41px;
-                padding: 1px 0;
-
-            }
-            @include x-smallMedia {
-                width: 35px;
-                height: 45px;
-                padding: 3px 0;
-
-            }
-        }
-
-        .rdts {
-            @extend .comms;
-            margin-left: 1.4em;
-            color: #2f2a2a;
-            @include x-smallMedia {
-                margin-left: 1em;
-            }
-        }
-    }
-
-    .author-crt {
-        font-size: 13px;
-        @include x-smallMedia {
-            font-size: 11px;
-        }
-        .author {
-            @include positionTL(absolute, 1.4em, 8.5em);
-            color: #999;
-            @include ordinaryMedia {
-                @include positionTL(absolute, 1.2em, 8.5em);
-            }
-            @include x-smallMedia {
-                @include positionTL(absolute, 1.2em, 8.25em);
-            }
-        }
-
-        .crt {
-            @include positionTL(absolute, 1.4em, 13em);
-            color: #999;
-            @include ordinaryMedia {
-                @include positionTL(absolute, 1.2em, 12.5em);
-            }
-            @include x-smallMedia {
-                @include positionTL(absolute, 2.3em, 8.25em);
-            }
-        }
-    }
-    .qus-tit-tag {
-        a {
-            text-decoration: none;
-            color: #424141;
-        }
-        margin-left: 6.8em;
-        display: inline-block;
-        line-height: 1.2;
-        font-size: 16px;
-        @include ordinaryMedia {
-            margin-left: 7.85em;
-            font-size: 14px;
-        }
-        @include smallMedia {
-            margin-left: 9.2em;
-            font-size: 12px;
-        }
-        @include x-smallMedia {
-            margin-left: 8.25em;
-            font-size: 10px;
-        }
-        .qus-tit {
-            font: {
-                size: 1.25em;
-                weight: 500;
-            }
-            &:hover {
-                color: #2ed07a;
-            }
-        }
-
-       .qus-tag {
-            margin: 0 0.25em;
-            padding: 0 0.375em;
-            background-color: rgba(1, 126, 102, .08);
-            &:hover {
-                font: {
-                    size: 1.2em;
-                    weight: 600;
-                }
-                color: white;
-                background-color: #009a61;
-            }
-        }
-    }
-}
-
-.qus-paging {
-    text-align: center;
-}
-
 //sidebar content style: ;
 
 .qus-create {
@@ -184,6 +44,7 @@ $x-smallMedia-width: 365px;
     padding: 1em;
     background-color: #fcf8e3;
     color: #8a6d3b;
+    text-align: center;
     @include border-radius(1em);
     p {
         font: {
@@ -260,7 +121,7 @@ $x-smallMedia-width: 365px;
     position: relative;
     bottom: 0;
     padding-bottom: 0;
-    border-top: 1px  solid #ded4d4;
+    // border-top: 1px  solid #ded4d4;
     width: auto;
     height: auto;
     h3 {
@@ -306,5 +167,49 @@ $x-smallMedia-width: 365px;
     p {
         padding-top: 6px;
         text-align: center;
+    }
+}
+
+
+// !!note!!: no responsive design
+.singleQuestion {
+
+    margin-top: 2px;
+    border-bottom: 1px groove #9FA6AD;
+    padding: 5px;
+
+    .count {
+        display: inline-block;
+        vertical-align: top;
+        width: 25%;
+        div {
+            display: inline-block;
+            width: 30%;
+            // border: 1px solid black;
+            text-align: center;
+            p {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .details {
+        display: inline-table;
+        vertical-align: top;
+        padding: 5px 0 0 5px;
+        width: 65%;
+        height: 63px;
+        // border: 1px solid black;
+
+        .tag-and-create-info {
+
+            .tag {
+                margin-left: 2px;
+            }
+
+            .create-info {
+                float: right;
+            }
+        }
     }
 }

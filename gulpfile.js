@@ -14,10 +14,10 @@ require('laravel-elixir-vue');
  */
 
 elixir(function (mix) {
-    mix.sass('app.scss')
-        .sass('layout/nav.scss', 'public/css/other')
-        .sass('other_pages/main.scss', 'public/css/other')
-        .sass('other_pages/home.scss', 'public/css/other');
+    // mix.sass('app.scss')
+        // mix.sass('layout/nav.scss', 'public/css/other')
+            mix.sass('other_pages/main.scss', 'public/css/other');
+        // .sass('other_pages/home.scss', 'public/css/other');
         // .copy('node_modules/font-awesome/fonts', 'public/fonts')
         // .copy('node_modules/simplemde/dist/simplemde.min.css', 'public/css/simplemde.min.css')
         // .copy('node_modules/simplemde/dist/simplemde.min.js', 'public/js/simplemde.min.js')
