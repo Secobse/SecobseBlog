@@ -78,12 +78,13 @@ class QuestionController extends Controller
 
 		$question->readtimes += 1;
 
-		$question->content = Markdown::convertToHtml($question->content);
-
 		$answer = Answer::all()->where('question_id',$id);
 		$count = $answer->count('id');
 		$question->answertimes = $count;
 		$question->save();
+
+		$question->content = Markdown::convertToHtml($question->content);
+
 		return view('questions.show', compact('question','answer','count'));
 	}
 

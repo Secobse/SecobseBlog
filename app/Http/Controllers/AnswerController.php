@@ -28,25 +28,37 @@ class AnswerController extends Controller
 	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request) {
+	public function store(Request $request)
+	{
 		$this->validate($request, [
 			'answer_content' => 'required'
 		]);
 
 		$question_id = $request->get('question_id');
 		$content = $request->input('answer_content');
+		$user = Auth::user();
 
-		$answer = Answer::create([
-			'answer_content' => $content ,
-			'html_content' => Markdown::convertToHtml($content),
-			'answer_name' => Auth::user()->name,
-			'avatar' => Auth::user()->avatar,
-			'question_id' => $question_id,
+		$query = \DB::table('answers')->select('answer_name')
+			->where('question_id', $question_id)
+			->where('answer_name', $user->name)
+			->get()->all();
 
-		]);
+		if ($query) {
+			session()->flash('status', 'You have answered!');
+		} else {
+			$answer = Answer::create([
 
-		session()->flash('status', 'Answer has been published successfully!');
+				'answer_name' => $user->name,
+				'answer_content' => $content,
+				'html_content' => Markdown::convertToHtml($content),
+				'avatar' => $user->avatar,
+				'question_id' => $question_id,
 
-		return redirect('/questions/'.$question_id);
+			]);
+
+			session()->flash('status', 'Answer has been published successfully!');
+		}
+
+		return redirect('/questions/' . $question_id);
 	}
 }

@@ -79,16 +79,19 @@
 		$('#tologin').click(function () {
 			$('#login').modal('show');
 		});
+		$(document).ready(function() {
+			$('.comments').click(function() {
+				$comment = $(this).closest('.comment');
+				$comment.siblings().find('.addComment').slideUp();
+				$comment.find('.addComment').fadeToggle(1000, 'swing');
+			});
+		});
+
 	</script>
 	<script>
 		var simplemde = new SimpleMDE({
 			element: $("#answerEditor")[0],
 			codeSyntaxHighlighting: true
-		});
-		var comment = new SimpleMDE({
-			element: $("#comment")[0],
-			toolbar: false,
-			toolbarTips: false
 		});
 	</script>
 @endsection
