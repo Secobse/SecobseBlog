@@ -26,7 +26,7 @@
 			  </div>
 			  <div class="panel-body">
 			    <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
-				  <span class="glyphicon glyphicon-tag"></span>
+				  <i class="fa fa-tag" aria-hidden="true"></i>
 				  @foreach ($question->tags as $tag)
 					  <a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
 				  @endforeach

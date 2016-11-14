@@ -11,7 +11,8 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link  rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/other/nav.css') }}">
 
     <link rel="shortcut icon" href="/images/logo.png">
 

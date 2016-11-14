@@ -2,6 +2,10 @@
 
 @section('title', 'Question')
 
+@section('css')
+<link rel="stylesheet" href="/css/other/main.css">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

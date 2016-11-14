@@ -1,5 +1,8 @@
 body {
     background-color: #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 //@mixin
@@ -43,40 +46,6 @@ $x-smallMedia-width: 365px;
 @mixin x-smallMedia {
     @media screen and (max-width: #{$x-smallMedia-width}) {
         @content;
-    }
-}
-
-//Navigation bar style
-.secobse-logo {
-    font: {
-        weight: bold;
-        size: 2.5em
-    }
-    color: #5fb960 !important;
-}
-
-.nav-title {
-    font: {
-        weight: 600;
-        size: 1em;
-    }
-}
-
-.navbar-collapse {
-    ul {
-        .dropdown-toggle {
-            position: relative;
-            padding-left: 3.4375em;
-            font-weight: bold;
-            img {
-                position: absolute;
-                top: 0.625em;
-                left: 0.625em;
-                @include border-radius(50%);
-                width: 2em;
-                height: 2em;
-            }
-        }
     }
 }
 
