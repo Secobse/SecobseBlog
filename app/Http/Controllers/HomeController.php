@@ -33,6 +33,7 @@ class HomeController extends Controller
 			->where('name',  Auth::user()->name)
 			->get();
 		$tags = Question::UserTags()->distinct()->get();
-        return view('home', compact('userQuestions','tags','user'));
+        $questionCount = User::withCount('questions')->get();
+        return view('home', compact('userQuestions','tags','user', 'questionCount'));
     }
 }
