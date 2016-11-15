@@ -76,22 +76,21 @@
 	<link href="/css/simplemde.min.css" rel="stylesheet">
 	<script src="/js/simplemde.min.js"></script>
 	<script>
-		$('#tologin').click(function () {
-			$('#login').modal('show');
-		});
 		$(document).ready(function() {
+			$('#tologin').click(function () {
+				$('#login').modal('show');
+			});
+
 			$('.comments').click(function() {
 				$comment = $(this).closest('.comment');
 				$comment.siblings().find('.addComment').slideUp();
 				$comment.find('.addComment').fadeToggle(1000, 'swing');
 			});
-		});
 
-	</script>
-	<script>
-		var simplemde = new SimpleMDE({
-			element: $("#answerEditor")[0],
-			codeSyntaxHighlighting: true
+			var simplemde = new SimpleMDE({
+				element: $("#answerEditor")[0],
+				codeSyntaxHighlighting: true
+			});
 		});
 	</script>
 @endsection
