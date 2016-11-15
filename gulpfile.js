@@ -26,6 +26,6 @@ elixir(function (mix) {
     //     .copy('node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css', 'public/css/select2-bootstrap.min.css')
     //     .copy('resources/assets/js/tag.js', 'public/js/tag.js')
     //     .webpack('app.js');
-    mix.sass('other_pages/profile.scss', 'public/css/other');
+    mix.sass('other_pages/main.scss', 'public/css/other');
 })
 ;
