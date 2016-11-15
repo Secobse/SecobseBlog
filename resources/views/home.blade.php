@@ -43,9 +43,7 @@
                           <h5>
                             Total Question:
                             <label for="count" class="label label-info">
-                              @foreach($questionCount as $q)
-                                {{ $q->questions_count }}
-                              @endforeach
+                              {{ $questionCount }}
                             </label>
                           </h5>
                       </div>

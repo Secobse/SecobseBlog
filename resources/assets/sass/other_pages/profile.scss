@@ -1,0 +1,14 @@
+.user-info {
+	img {
+		width: 100px;
+		height:100px;
+		margin: {
+			top: 10px;
+			left: 20px;
+		}
+	}
+
+	@media screen and (max-width: 650px) {
+		text-align: center;
+	}
+}

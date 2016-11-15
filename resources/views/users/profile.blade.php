@@ -2,45 +2,74 @@
 
 @section('title', 'Profile')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/other/profile.css') }}">
+@endsection('css')
+
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-7 col-md-offset-2">@foreach($user as $u)
-            <img src="/uploads/avatars/{{ $u->avatar }}" alt="{{ $u->avatar }}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px;" />
-            <h2>
-                {{ $u->name }} 's Profile
-            </h2>
+    <div class="row profile">
+        <div class="col-md-6 col-md-offset-3">
+        @foreach($user as $u)
+        	<div class="user-info">
+	        	<div class="col-md-4">
+		            <img src="/uploads/avatars/{{ $u->avatar }}" alt="{{ $u->avatar }}" />
+	        	</div>
 
-            @if ($u->isactive)
-			<button class="btn btn-success" style="margin-top: 10px;"><i class="fa fa-heart" aria-hidden="true" style="padding-left: 2px;"></i>online</button>
-			@else
-			<button class="btn btn-danger" style="margin-top: 10px"><i class="fa fa-heart-o" aria-hidden="true" style="padding-left: 2px;"></i>offline</button>
-			@endif
-			<p style="position: relative; bottom: 30px; left: 100px;">last time login: {{ $u->updated_at }}</p>
+	        	<div class="col-md-8">
+		            <h2>
+		                {{ $u->name }}
+		            </h2>
 
-			@foreach($questions as $question)
-			<div class="panel panel-default" style="margin-top: 20px;">
-			  <div class="panel-heading">
-			  	<button class="btn btn-sm btn-primary">published-time<span class="badge">{{ $question->published_at }}</span></button>
-				<button class="btn btn-sm btn-warning">updated-time<span class="badge">{{ $question->updated_at }}</span></button>
-			  </div>
-			  <div class="panel-body">
-			    <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
-				  <i class="fa fa-tag" aria-hidden="true"></i>
-				  @foreach ($question->tags as $tag)
-					  <a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
-				  @endforeach
-			  </div>
+		            @if ($u->isactive)
+					<label class="label label-success"><i class="fa fa-heart" aria-hidden="true"></i>online</label>
+					@else
+					<label class="label label-danger"><i class="fa fa-heart-o" aria-hidden="true"></i>offline</label>
+					@endif
+					<p>last time login: {{ $u->updated_at }}</p>
+	        	</div>
+	        </div>
+			
+			<div class="col-md-12">
+				<div class="list-group">
+					  @foreach($questions as $question)
+						<a href="/questions/{{ $question->id }}" class="list-group-item">
+						  <h3 class="list-group-item-heading" id="question-title">{{ $question->title }}</h3>
+						  <p class="list-group-item-text">
+						  	  <i class="fa fa-tag" aria-hidden="true"></i>
+						  	  @foreach ($question->tags as $tag)
+						  		  <span>{{ $tag->name }}</span>
+						  	  @endforeach
+						  </p>
+						</a>
+					  @endforeach
+				 </div>
 			</div>
-			@endforeach
-			<nav>
-			  <ul class="pager">
-			    <li class="previous"><a href="{{ $questions->previousPageUrl() }}">&larr; Older</a></li>
-			    <li class="next"><a href="{{ $questions->nextPageUrl() }}">Newer &rarr;</a></li>
-			  </ul>
-			</nav>
+				<nav>
+				  <ul class="pager">
+				    <li class="previous"><a href="{{ $questions->previousPageUrl() }}">&larr; Newer</a></li>
+				    <li class="next"><a href="{{ $questions->nextPageUrl() }}">Older &rarr;</a></li>
+				  </ul>
+				</nav>
+			</div>
 
-        @endforeach</div>
+        @endforeach
+        </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+	$(document).ready(function() {
+		var titles = $("h3#question-title");
+		for (var i = 0; i < titles.length; i++) {
+			var content = $(titles[i]).html();
+			if (content.length > 20) {
+				content = content.substring(0, 10) + "...";
+			}
+			$(titles[i]).html(content);
+		}
+	});
+</script>
 @endsection
