@@ -14,7 +14,7 @@
     <li role="presentation"><a href="#noanswer" role="tab" data-toggle="tab">No answer</a></li>
     <li role="presentation"><a href="#mostviewed" role="tab" data-toggle="tab">Most viewed</a></li>
   </ul>
-
+    {{--rencentQuestions--}}
   <div class="tab-content question-content">
     <div role="tabpanel" class="tab-pane active" id="recent">
       <div class="row">
@@ -29,7 +29,15 @@
               <div class="singleQuestion">
                   <div class="count-wide">
                       <div><p>0</p><p>votes</p></div>
-                      <div><p>{{ $question->answertimes }}</p><p>answers</p></div>
+                      @if($question->answertimes == 0)
+                              <div style="color: #AD3A37;">
+                                  <p>{{ $question->answertimes }}</p><p>answers</p>
+                              </div>
+                          @else
+                              <div style="color: #45A163;">
+                                  <p>{{ $question->answertimes }}</p><p>answers</p>
+                              </div>
+                      @endif
                       <div><p>{{ $question->readtimes }}</p><p>views</p></div>
                   </div>
                   <div class="details">
@@ -96,8 +104,104 @@
           </div>
       </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="noanswer">...</div>
-    <div role="tabpanel" class="tab-pane" id="mostviewed">...</div>
+      {{--noAnswerQuestions--}}
+    <div role="tabpanel" class="tab-pane" id="noanswer">
+        <div class="row">
+            @if(Session::has('status'))
+                <div class="alert alert-success">
+                    <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ Session::get('status') }}
+                </div>
+            @endif
+            <div class="col-md-9">
+                @foreach($noAnswerQuestion as $question)
+                    <div class="singleQuestion">
+                        <div class="count-wide">
+                            <div><p>0</p><p>votes</p></div>
+                            <div><p>{{ $question->answertimes }}</p><p>answers</p></div>
+                            <div><p>{{ $question->readtimes }}</p><p>views</p></div>
+                        </div>
+                        <div class="details">
+                            <div>
+                                <a href="{{ url('questions', $question->id) }}">
+                                    <span>{{ $question->title }}</span>
+                                </a>
+                            </div>
+                            <div class="tag-and-create-info">
+                                @unless($question->tags->isEmpty())
+                                    @foreach ($question->tags as $tag)
+                                        <a href="{{url('tag/'.$tag->id.'')}}" class="tag">
+                                            <label class="label label-success">{{ $tag->name }}</label>
+                                        </a>
+                                    @endforeach
+                                @endunless
+                                <div class="create-info">
+                                    <a href="/profile/{{ $question->username }}">
+                                        <span>{{ $question->username }}</span>
+                                    </a>
+                                    <span>created-time: {{ $question->created_at }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="count-narrow">
+                            <div><label for="vote" class="label label-default">votes: 0</label></div>
+                            <div><label for="answer" class="label label-default">answers: {{ $question->answertimes }}</label></div>
+                            <div><label for="view" class="label label-default">views: {{ $question->readtimes }}</label></div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+      {{--mostViewQuestions--}}
+    <div role="tabpanel" class="tab-pane" id="mostviewed">
+        <div class="row">
+            @if(Session::has('status'))
+                <div class="alert alert-success">
+                    <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ Session::get('status') }}
+                </div>
+            @endif
+            <div class="col-md-9">
+                @foreach($mostViewQuestion as $question)
+                    <div class="singleQuestion">
+                        <div class="count-wide">
+                            <div><p>0</p><p>votes</p></div>
+                            <div><p>{{ $question->answertimes }}</p><p>answers</p></div>
+                            <div><p>{{ $question->readtimes }}</p><p>views</p></div>
+                        </div>
+                        <div class="details">
+                            <div>
+                                <a href="{{ url('questions', $question->id) }}">
+                                    <span>{{ $question->title }}</span>
+                                </a>
+                            </div>
+                            <div class="tag-and-create-info">
+                                @unless($question->tags->isEmpty())
+                                    @foreach ($question->tags as $tag)
+                                        <a href="{{url('tag/'.$tag->id.'')}}" class="tag">
+                                            <label class="label label-success">{{ $tag->name }}</label>
+                                        </a>
+                                    @endforeach
+                                @endunless
+                                <div class="create-info">
+                                    <a href="/profile/{{ $question->username }}">
+                                        <span>{{ $question->username }}</span>
+                                    </a>
+                                    <span>created-time: {{ $question->created_at }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="count-narrow">
+                            <div><label for="vote" class="label label-default">votes: 0</label></div>
+                            <div><label for="answer" class="label label-default">answers: {{ $question->answertimes }}</label></div>
+                            <div><label for="view" class="label label-default">views: {{ $question->readtimes }}</label></div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
   </div>
 </div>
 
