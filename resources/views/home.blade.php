@@ -63,19 +63,14 @@
                                 @foreach($userQuestions as $userQuestion)
                                 <li class="list-group-item">
                                     <span class="badge" style="background-color: white;">
-                                        <a href=""
-                                                    onclick="event.preventDefault();
-                                                             document.getElementById('delete-form').submit();" class="pull-right">
-                                                   <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                                        <a href="#" class="pull-right deleteQuestion"
+                                          data-id="{{ $userQuestion->id }}">
+                                            <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
                                         </a>
                                         <a href="/questions/{{ $userQuestion->id }}/edit" class="pull-right"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
                                     </span>
-                                    {{ $userQuestion->title }}
+                                    <a href="/questions/{{ $userQuestion->id }}">{{ $userQuestion->title }}</a>
                                 </li>
-                                <form id="delete-form" action="/questions/{{ $userQuestion->id }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                </form>
                                 @endforeach
                                 <nav>
                                   <ul class="pager">
@@ -120,4 +115,27 @@
         </div>
   </div> 
 </div>
+@endsection
+
+@section('js')
+<script>
+  $(document).ready(function() {
+    $(".deleteQuestion").click(function() {
+        var id = $(this).data("id");
+        var self = $(this);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+          url: "/questions/" + id,
+          type: "DELETE",
+        }).done(function() {
+          self.closest("li").remove();
+        });
+    });
+  });
+</script>
 @endsection

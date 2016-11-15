@@ -16,13 +16,13 @@
 				<div class="col-md-8 col-md-offset-2 article_show_item">
 					<h1 style="text-align:center;">{{ $question->title }}</h1>
 					<hr style="border-width:2px;border-top-color:rgba(125, 116, 122, 0.98)">
-					<i class="glyphicon glyphicon-calendar"></i><em
+					<i class="fa fa-calendar" aria-hidden="true"></i><em
 							style="font-size:14px;margin-right:60%;">Date:({{ $question->published_at }})</em>
 
-					<i class="glyphicon glyphicon-user"></i><em style="font-size:14px;">Author: <a
+					<i class="fa fa-user-circle" aria-hidden="true"></i><em style="font-size:14px;">Author: <a
 								href="/profile/{{ $question->username }}">{{ $question->username }}</a></em>
 					@unless($question->tags->isEmpty())
-						<em>Tags:<i class="glyphicon glyphicon-tags"></i>
+						<em>Tags:<i class="fa fa-tags" aria-hidden="true"></i></i>
 							@foreach($question->tags as $tag)
 								<a href="{{url('tag/'.$tag->id.'')}}">{{ $tag->name }}&nbsp;</a>
 							@endforeach

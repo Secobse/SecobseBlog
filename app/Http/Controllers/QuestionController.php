@@ -138,10 +138,6 @@ class QuestionController extends Controller
 		$question = Question::findOrFail($id);
 
 		$question->delete();
-
-		session()->flash('status', 'Question has been deleted successfully!');
-
-		return redirect('/home');
 	}
 
 }
